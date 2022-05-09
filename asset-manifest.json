@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.css": "/Graduate-Project-React/static/css/main.31d6cfe0.css",
+    "main.js": "/Graduate-Project-React/static/js/main.8a20420d.js",
+    "index.html": "/Graduate-Project-React/index.html",
+    "main.8a20420d.js.map": "/Graduate-Project-React/static/js/main.8a20420d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d6cfe0.css",
+    "static/js/main.8a20420d.js"
+  ]
+}
