@@ -1,0 +1,13 @@
+
+body{
+    background-color: #EFEFEF;
+    margin: 0;
+    font-family: "Mulish";
+}
+.content-body{
+    margin-top: 60px;
+    padding: 0 100px 0 200px;
+}
+p{
+    margin: 0;
+}
