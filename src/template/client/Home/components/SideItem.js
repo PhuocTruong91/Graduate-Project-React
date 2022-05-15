@@ -5,10 +5,15 @@ function SideItem(prop) {
         <div class="item">
             <p class="title">{prop.title}</p>
             <div class="group-item">
-                {prop.listItem.map(item => {
+                {prop.listItem.map((item, index) => {
                     return (
                         <div class="item-checkbox">
-                            <input type="checkbox" value={item.value} name={prop.cate + '_' + item.value}/>
+                            {prop.cate === 'shop' ? 
+                                (
+                                <input type='checkbox' value={item.value} name={prop.cate + '_' + item.value}/>
+                                ) : 
+                                (<input type='radio' value={item.value} name={prop.cate}/>)
+                            }
                             <p>{item.name}</p>
                         </div>
                     )
