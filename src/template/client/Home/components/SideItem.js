@@ -1,6 +1,10 @@
 import $ from 'jquery';
 
 function SideItem(prop) {
+    function handleOnchange(event) {
+        prop.getListCate(event.target.value, event.target.name);
+    }
+
     return (  
         <div class="item">
             <p class="title">{prop.title}</p>
@@ -12,7 +16,7 @@ function SideItem(prop) {
                                 (
                                 <input type='checkbox' value={item.value} name={prop.cate + '_' + item.value}/>
                                 ) : 
-                                (<input type='radio' value={item.value} name={prop.cate}/>)
+                                (<input onChange={handleOnchange} type='radio' value={item.value} name={prop.cate}/>)
                             }
                             <p>{item.name}</p>
                         </div>

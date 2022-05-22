@@ -1,6 +1,38 @@
 import MainItem from './MainItem';
+import React from 'react';
+import ClipLoader from "react-spinners/ClipLoader";
 
-function Main() {
+import tgdd from '../../../../images/tgdd.png'
+import fpt from '../../../../images/fpt.png'
+import hoangha from '../../../../images/hoangha.png'
+import topzone from '../../../../images/topzone.png'
+import viettel from '../../../../images/viettel.png'
+
+function Main(props) {
+    var arrayShop = ['TGDD','TZ','HH','VT','FPT']
+    var listShop = [];
+    var listItem = props.listItem;
+    var mapImage = {
+        'TGDD' : tgdd,
+        'FPT' : fpt,
+        'HH' : hoangha,
+        'TZ' : topzone,
+        'VT' : viettel
+    };
+
+    arrayShop.forEach(item => {
+        if(listItem){
+            var arr = listItem.filter(function(i){
+                return i.store === item;
+            })
+            var obj = {};
+            obj.img = mapImage[item];
+            obj.name = item;
+            obj.listItem = arr;
+            listShop.push(obj)
+        }
+    });
+
     return (
         <div class="main">
             <div class="input">
@@ -10,7 +42,16 @@ function Main() {
                 </svg>
             </div>
             <div class="content">
-                <MainItem></MainItem>
+                {   props.isLoad ? 
+                    <div class="loader">
+                        <ClipLoader color="#0066FF" size={70} />
+                    </div>  
+                    :
+                    listShop ? listShop.map(item => {
+                        return <MainItem store= {item.name} img={item.img} listItem={item.listItem}></MainItem>
+                    }) : ''
+                }
+                
             </div>
         </div>
     );

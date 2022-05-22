@@ -63,7 +63,23 @@
             }
         }
         .content{
+            .loader{
+                text-align: center;
+            }
             .shop{
+                .logo-contanier{
+                    background: #EFEFEF;
+                    padding: 28px 10px;
+                    width: 120%;
+                    margin-left: -49px;
+                    &:first-child{
+                        background-color: white;
+                        margin-left: unset;
+                        width: 100%;
+                        padding: unset;
+                        padding-bottom: 20px;
+                    }
+                }
                 .group-item{
                     display: flex;
                     flex-wrap: wrap;
@@ -75,11 +91,11 @@
                         flex: 27%;
                         max-width: 240px;
                         margin-bottom: 30px;
+                        min-height: 325px;
                         img{
                             max-width: 100%;
                             background: #FFFFFF;
-                            border-radius: 10px;
-                            margin-bottom: 12px;
+                            margin-bottom: 20px;
                         }
                         .name{
                             max-width: 240px;
@@ -91,8 +107,8 @@
                             text-overflow: ellipsis;
                         }
                         .price{
-                            font-weight: 300;
-                            font-size: 13px;
+                            font-weight: bold;
+                            font-size: 14px;
                             line-height: 13px;
                             margin-bottom: 8px;
                         }

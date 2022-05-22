@@ -1,6 +1,6 @@
 import SideItem from './SideItem'
 
-function Side() {
+function Side(props) {
     var list = [
         {
             title: 'Danh mục',
@@ -15,12 +15,12 @@ function Side() {
                     value: 'LAPTOP'
                 },
                 {
-                    name :'Máy tính',
+                    name :'Loa & Tai nghe',
                     value: 'SOUND'
                 },
                 {
                     name :'Phụ kiện',
-                    value: 'ACESSORIES'
+                    value: 'ACCESSORIES'
                 },
             ]
         },
@@ -77,11 +77,12 @@ function Side() {
             ]
         }
     ];
+
     return ( 
         <div class="side-option">
             {
                 list.map( (item,index) => {
-                    return <SideItem key={index} title={item.title} cate={item.cate} listItem={item.listItem}></SideItem>
+                    return <SideItem getListCate={props.getListCate} key={index} title={item.title} cate={item.cate} listItem={item.listItem}></SideItem>
                     }
                 )
             }
