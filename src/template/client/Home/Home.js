@@ -2,7 +2,7 @@ import React from 'react';
 
 import Side from './components/Side'
 import Main from './components/Main'
-import { getItem } from '../../../controller';
+import { getItem, getItemByName } from '../../../controller';
 import '../../../css/home.scss'
 
 
@@ -28,12 +28,25 @@ function Home() {
            setIsload(false);
         }
     }
-    console.log(listItem)
+
+    function getListByName() {
+        var value = document.getElementById('searchInput').value;
+        setIsload(true);
+        getItemByName(value)
+            .then(res =>{
+                setListItem(res, [])
+                setIsload(false);
+            })
+            .catch( err =>{
+                console.log(err);
+                setIsload(false);
+        });
+    }  
 
     return ( 
         <div class="homepage">
             <Side getListCate={getListCate}></Side>
-            <Main isLoad={isLoad} listItem={listItem}></Main>
+            <Main getListByName={getListByName} isLoad={isLoad} listItem={listItem}></Main>
         </div>
         
     );

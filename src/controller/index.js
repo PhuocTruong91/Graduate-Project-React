@@ -1,8 +1,6 @@
 import axios from 'axios';
-import React from 'react';
 
 export function  getItem(data = {}){
-    console.log('123123')
     var result ={}
 
     var baseUrl = 'https://graduate-nodejs.herokuapp.com/products?';
@@ -13,6 +11,22 @@ export function  getItem(data = {}){
 
     result = axios.get(baseUrl)
     .then(res => {
+        return res.data.result;
+    })
+    .catch(err => {
+        console.log(err);
+    })
+    return result;
+}
+
+export function  getItemByName(data = ''){
+    var result ={}
+    var baseUrl = 'https://graduate-nodejs.herokuapp.com/search?name=' + data;
+    
+    console.log(baseUrl)
+    result = axios.get(baseUrl)
+    .then(res => {
+        console.log(res.data.result)
         return res.data.result;
     })
     .catch(err => {
