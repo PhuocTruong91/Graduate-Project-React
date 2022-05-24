@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Graduate-Project-React/static/css/main.070867e7.css",
-    "main.js": "/Graduate-Project-React/static/js/main.6102ef55.js",
+    "main.js": "/Graduate-Project-React/static/js/main.198e3199.js",
     "static/media/loa.png": "/Graduate-Project-React/static/media/loa.9bcd40080f7b8e740440.png",
     "static/media/mulish-all-400-normal.woff": "/Graduate-Project-React/static/media/mulish-all-400-normal.38c7d04e126dff3ae16d.woff",
     "static/media/mulish-latin-400-normal.woff2": "/Graduate-Project-React/static/media/mulish-latin-400-normal.789d075c570d16d02c38.woff2",
@@ -11,10 +11,10 @@
     "static/media/mulish-vietnamese-400-normal.woff2": "/Graduate-Project-React/static/media/mulish-vietnamese-400-normal.0c5054fb161d1cdcec73.woff2",
     "index.html": "/Graduate-Project-React/index.html",
     "main.070867e7.css.map": "/Graduate-Project-React/static/css/main.070867e7.css.map",
-    "main.6102ef55.js.map": "/Graduate-Project-React/static/js/main.6102ef55.js.map"
+    "main.198e3199.js.map": "/Graduate-Project-React/static/js/main.198e3199.js.map"
   },
   "entrypoints": [
     "static/css/main.070867e7.css",
-    "static/js/main.6102ef55.js"
+    "static/js/main.198e3199.js"
   ]
 }
