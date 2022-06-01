@@ -16,6 +16,10 @@ p{
     pointer-events: none;
 }
 
+.d-none{
+    display: none !important;
+}
+
 .fade{
     opacity: 1;
 }

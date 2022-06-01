@@ -7,6 +7,7 @@ import fpt from '../../../../images/fpt.png'
 import hoangha from '../../../../images/hoangha.png'
 import topzone from '../../../../images/topzone.png'
 import viettel from '../../../../images/viettel.png'
+import {listItemStore, actionType} from '../../../../redux/listItem';
 
 function Main(props) {
     var arrayShop = ['TGDD','TZ','HH','VT','FPT']
@@ -35,7 +36,7 @@ function Main(props) {
 
     function handleSearch(){
         var value = document.getElementById('searchInput').value;
-        props.getListByName(value);
+        listItemStore.dispatch({type: actionType.getbyname, name: value})
     }
 
     return (

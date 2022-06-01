@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {isLoadStore} from '../redux/isLoad'
 
 var domain = 'https://graduate-nodejs.herokuapp.com/'
 
@@ -21,11 +22,11 @@ export function  getItem(data = {}){
     return result;
 }
 
-export function  getItemByName(data = ''){
+export async function  getItemByName(data = ''){
     var result ={}
     var baseUrl = domain + 'search?name=' + data;
     
-    result = axios.get(baseUrl)
+    result = await axios.get(baseUrl)
     .then(res => {
         return res.data.result;
     })
@@ -33,4 +34,22 @@ export function  getItemByName(data = ''){
         console.log(err);
     })
     return result;
+}
+
+export function createAccount(data) {
+    var baseUrl = domain + 'create';
+    isLoadStore.dispatch({type: 'TOGGLE'});
+    axios.post(baseUrl, data)
+        .then(function (res) {
+            isLoadStore.dispatch({type: 'TOGGLE'});
+            if(res.data.success){
+                alert('Tạo tài khoản thành công')
+            }else{
+                alert('Tạo tài khoản không thành công')
+            }
+        })
+        .catch(function (error) {
+            isLoadStore.dispatch({type: 'TOGGLE'});
+            alert('Tạo tài khoản không thành công')
+        });
 }

@@ -2,6 +2,7 @@ import * as React from "react";
 import logo from '../../../images/logo.png'
 import '../../../css/header.scss'
 import Login from './components/Login'
+import {listItemStore, actionType} from '../../../redux/listItem';
 
 function Header() {
     var isLogin = false;
@@ -14,7 +15,12 @@ function Header() {
             document.getElementById("header").classList.add("on-top")
         }
     })
-  
+
+    function handleSearchBanner(){
+        var value = document.getElementById('searchBanner').value;
+        listItemStore.dispatch({type: actionType.getbyname, name: value})
+    }
+    
     function toggleLogin(){
         setDisplay(!display)
         if(document.getElementById("loginContainer").classList.contains('un-fade')){
@@ -52,12 +58,13 @@ function Header() {
                 }
             </div> 
             <div id="background" class="background">
-                <div class="group-search">
-                    <input id="searchBanner"/>
-                    <div  id="label" class="label">
-                        <p class="search-label">tìm kiếm</p>
+                    <div class="group-search">
+                        <p class="title">Find your product ...</p>
+                        <input id="searchBanner"/>
+                        <div onClick={handleSearchBanner} id="label" class="label">
+                            <p  class="search-label">tìm kiếm</p>
+                        </div>
                     </div>
-                </div>
             </div>
             <Login display={display}/>
         </div>

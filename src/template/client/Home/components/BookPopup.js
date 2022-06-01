@@ -19,10 +19,10 @@ function BookPopup(props) {
                 <p class="title">Đặt lời nhắc</p>
                 <div class="present-price">
                     <p class="present-price_title">Giá hiện tại</p>
-                    <p>{'17000000'
+                    <p>{(props.price ? props.price
                         .toString()
-                        .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}{" "}
-                      VNĐ</p>
+                        .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") : '') + ' '}
+                       VNĐ</p>
                 </div>
                 <div class="expected-price">
                     <p class="expected-price_title">Giá mong muốn</p>

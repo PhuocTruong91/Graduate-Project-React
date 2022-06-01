@@ -96,6 +96,16 @@
             height: 50px;
             align-items: center;
             border-radius: 4px;
+            .title{
+                position: absolute;
+                top: -50px;
+                color: white;
+                font-size: 26px;
+                letter-spacing: 3px;
+                animation: 
+                typing 3.5s steps(30, end),
+                blink-caret .75s step-end infinite;
+            }
             input{
                 height: 100%;
                 width: 700px;
@@ -135,6 +145,9 @@
         transition: all .5s;
         justify-content: center;
         display: flex;
+        .sign-in, .sign-up{
+            transition: all .5s;
+        }
         .content{
             margin-top: 20vh;
         }
@@ -166,7 +179,7 @@
             text-align: center;
             font-size: 13px;
         }
-        #btnLogin, #btnSignin{
+        .btn-second, .btn-first{
             border-radius: 3px;
             font-weight: 600;
             font-size: 15px;
@@ -179,11 +192,15 @@
                 opacity: .8;
             }
         }
-        #btnLogin{
+        .btn-first{
             color: white;
             background: #0066FF;
+            &.invalid{
+                background-color: gray;
+                pointer-events: none;
+            }
         }
-        #btnSignin{
+        .btn-second{
             color: #0066FF;
             background: white;
             margin-bottom: 10px;

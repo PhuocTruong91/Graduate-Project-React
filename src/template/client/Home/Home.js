@@ -4,25 +4,25 @@ import Side from './components/Side'
 import Main from './components/Main'
 import BookPopup from './components/BookPopup'
 import { getItem, getItemByName } from '../../../controller';
+import { isLoadStore } from '../../../redux/isLoad';
+import { listItemStore } from '../../../redux/listItem';
 import '../../../css/home.scss';
 
 function Home() {
     var [listItem, setListItem] = React.useState([]);
     var [tempList, setTempList] = React.useState([]);
-    var [isLoad, setIsload] = React.useState(false);
+    var [isLoad, setIsload] = React.useState(isLoadStore.getState());
     var [displayPopup, setDisplayPopup] = React.useState(false);
+    var [pricePopup, setPricePopup] = React.useState();
     
-    // React.useEffect(function (){
-    //     document.getElementById('label').addEventListener('click', function(){
-    //         var value = document.getElementById('searchBanner').value;
-    //         getListByName(value, 'banner');
-    //     })
-    // })
-    function handleSearchBanner(){
-        var value = document.getElementById('searchBanner').value;
-        getListByName(value, 'banner');
-    }
-  
+    isLoadStore.subscribe(() => {setIsload(isLoadStore.getState())});
+    listItemStore.subscribe( function() {
+        listItemStore.getState().then( (res) => {
+            setListItem(res);
+            setTempList(res);
+        })
+    })
+
     function getListCate(data,type){
         var listPrice = document.getElementsByName('price');
         var listCate = document.getElementsByName('cate');
@@ -84,39 +84,20 @@ function Home() {
         })
 
         setListItem(temp);
-    }
+    } 
 
-    function getListByName(value) {
-        setIsload(true);
-        getItemByName(value)
-            .then(res =>{
-                setListItem(res, [])
-                setTempList(res, [])
-                setIsload(false);
-                window.scrollTo({
-                    top:'869',
-                    behavior:'smooth'
-                });
-            })
-            .catch( err =>{
-                console.log(err);
-                setIsload(false);
-                window.scrollTo({
-                    top:'869',
-                    behavior:'smooth'
-                });
-        });
-    }  
-
-    function handleDisplayPopup(){
+    function handleDisplayPopup(event){
+        if(event.target.attributes.value){
+            setPricePopup(event.target.attributes.value.value)
+        }
         setDisplayPopup(!displayPopup)
     }
 
     return ( 
         <div class="homepage">
             <Side getListCate={getListCate}></Side>
-            <Main handleDisplayPopup={handleDisplayPopup} getListByName={getListByName} isLoad={isLoad} listItem={listItem}></Main>
-            <BookPopup displayPopup={displayPopup} handleDisplayPopup={handleDisplayPopup}></BookPopup>
+            <Main handleDisplayPopup={handleDisplayPopup} isLoad={isLoad} listItem={listItem}></Main>
+            <BookPopup price={pricePopup} displayPopup={displayPopup} handleDisplayPopup={handleDisplayPopup}></BookPopup>
         </div>
         
     );
