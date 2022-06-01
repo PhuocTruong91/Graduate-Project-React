@@ -1,9 +1,11 @@
 import axios from 'axios';
 
+var domain = 'https://graduate-nodejs.herokuapp.com/'
+
 export function  getItem(data = {}){
     var result ={}
 
-    var baseUrl = 'https://graduate-nodejs.herokuapp.com/products?';
+    var baseUrl = domain + 'products?';
     if(data.store) baseUrl = baseUrl + 'store=' + data.store;
     if(data.cate) baseUrl = baseUrl + '&cate=' + data.cate;
     if(data.id) baseUrl = baseUrl + '&id=' + data.id;
@@ -21,12 +23,10 @@ export function  getItem(data = {}){
 
 export function  getItemByName(data = ''){
     var result ={}
-    var baseUrl = 'https://graduate-nodejs.herokuapp.com/search?name=' + data;
+    var baseUrl = domain + 'search?name=' + data;
     
-    console.log(baseUrl)
     result = axios.get(baseUrl)
     .then(res => {
-        console.log(res.data.result)
         return res.data.result;
     })
     .catch(err => {

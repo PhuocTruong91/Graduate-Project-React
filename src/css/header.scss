@@ -1,14 +1,36 @@
 .container{
     background: white;
-    padding: 0 100px 0  30px;
     .header{
+        top: 0;
+        left: 0;
         background: white;
         width: 100%;
         height: 80px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: fixed;
+        transition: all .5s;
+        z-index: 100;
+        &.on-top{
+            background: transparent;
+            color: white;
+            .user-info{
+                svg{
+                    path{
+                        fill: white !important;
+                    }
+                }
+                p{
+                    color: white;
+                }
+            }
+            .login{
+                background: transparent;
+            }
+        }
         .left{
+            margin-left: 60px;
             display: flex;
             align-items: center;
             .nav-link{
@@ -23,13 +45,15 @@
         }
         .login{
             font-weight: 700;
-            font-size: 16px;
+            font-size: 13px;
             line-height: 20px;
             padding: 10px 50px;
             text-transform: uppercase;
             background: #0066FF;
             border-radius: 7px;
             color: white;
+            cursor: pointer;
+            margin-right: 30px;
             &:hover{
                 opacity: .8;
                 cursor: pointer;
@@ -38,8 +62,9 @@
         .user-info{
             display: flex;
             align-items: center;
+            margin-right: 50px;
             svg{
-                margin-right: 7px;;
+                margin-right: 7px;
             }
             .line{
                 width: 2px;
@@ -55,6 +80,114 @@
                 text-align: right;
                 color: #1F2125;
             }
+        }
+    }
+    .background{
+        background-image: url(https://marshallstore.vn/wp-content/plugins/travel-agency-companion/includes/images/img2.jpg);
+        width: 99vw;
+        height: 100vh;
+        background-position: bottom;
+        .group-search{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            display: flex;
+            height: 50px;
+            align-items: center;
+            border-radius: 4px;
+            input{
+                height: 100%;
+                width: 700px;
+                padding: 0;
+                border: 0;
+                outline: none;
+                padding-left: 20px;
+                font-size: 16px;
+                border-radius: 4px 0 0 4px;
+            }
+            .label{
+                border-radius: 0 4px 4px 0;
+                height: 100%;
+                background: white;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                border: none;
+                padding: 0 20px;
+                text-transform: uppercase;
+                background-color: #0066FF;
+                color: white;
+                cursor: pointer;
+                &:hover{
+                    opacity: .8;
+                }
+            }
+        }
+    }
+    #loginContainer{
+        position: fixed;
+        top: 80px;
+        width: 100vw;
+        height: 100vh;
+        background: white;
+        z-index: 100;
+        transition: all .5s;
+        justify-content: center;
+        display: flex;
+        .content{
+            margin-top: 20vh;
+        }
+        .title{
+            margin-bottom: 40px;
+            font-size: 26px;
+            font-weight: 600;
+            text-align: center;
+        }
+        input{
+            display: block;
+            width: 300px;
+            outline: none;
+            padding: 8px 12px;
+            border: 1px solid #d9e1e2;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            height: 25px;
+            &#password{
+                margin-bottom: 25px;
+            }
+            &:focus{
+                border: 1px solid #0066FF;
+            }
+        }
+        .line{
+            color: gray;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 13px;
+        }
+        #btnLogin, #btnSignin{
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 13px;
+            text-align: center;
+            padding: 13px 25px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            &:hover{
+                opacity: .8;
+            }
+        }
+        #btnLogin{
+            color: white;
+            background: #0066FF;
+        }
+        #btnSignin{
+            color: #0066FF;
+            background: white;
+            margin-bottom: 10px;
+            border: 1px solid #0066FF;
         }
     }
 }

@@ -1,14 +1,32 @@
 import * as React from "react";
-import styled from 'styled-components'
 import logo from '../../../images/logo.png'
 import '../../../css/header.scss'
+import Login from './components/Login'
 
 function Header() {
-    var isLogin = true;
+    var isLogin = false;
+    const [display, setDisplay] = React.useState(false);
+
+    document.addEventListener('scroll', function (){
+        if(window.scrollY > 120){
+            document.getElementById("header").classList.remove("on-top")
+        }else{
+            document.getElementById("header").classList.add("on-top")
+        }
+    })
+  
+    function toggleLogin(){
+        setDisplay(!display)
+        if(document.getElementById("loginContainer").classList.contains('un-fade')){
+            document.getElementById("header").classList.remove("on-top")
+        }else{
+            document.getElementById("header").classList.add("on-top")
+        }
+    }
 
     return (
         <div class="container">
-            <div class="header">
+            <div id="header" class="header on-top">
                 <div class="left">
                     <img src={logo}/>
                     <div class="nav-link">
@@ -30,9 +48,18 @@ function Header() {
                         </svg>
                         <p>VN</p>
                     </div> : 
-                    <p class="login">Đăng nhập</p>
+                    <p id="login-header"class="login" onClick={toggleLogin}>Đăng nhập</p>
                 }
             </div> 
+            <div id="background" class="background">
+                <div class="group-search">
+                    <input id="searchBanner"/>
+                    <div  id="label" class="label">
+                        <p class="search-label">tìm kiếm</p>
+                    </div>
+                </div>
+            </div>
+            <Login display={display}/>
         </div>
     );
 }

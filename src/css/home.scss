@@ -1,5 +1,6 @@
 .homepage{
     display: flex;
+    min-height: 100vh;
     .side-option{
         background-color: white;
         padding: 20px;
@@ -65,6 +66,16 @@
         .content{
             .loader{
                 text-align: center;
+                position: fixed;
+                background: rgba(0,0,0,.5);
+                width: 100vw;
+                height: 100vh;
+                top: 0;
+                left: 0;
+                z-index: 101;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
             .shop{
                 .logo-contanier{
@@ -83,7 +94,7 @@
                 .group-item{
                     display: flex;
                     flex-wrap: wrap;
-                    justify-content: space-between;
+                    justify-content: flex-start;
                     .item{
                         padding: 15px 10px;
                         margin-right: 20px;
@@ -128,6 +139,8 @@
                             color: #FFFFFF;
                             background: #0066FF;
                             margin-bottom: 10px;
+                            display: block;
+                            text-decoration: none;
                         }
                         .btn-remind{
                             color: #0066FF;
@@ -136,6 +149,97 @@
                         }
                     }
                 }
+            }
+        }
+    }
+    .book-popup{
+        transition: .3s;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,.7);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 103;
+        &_container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            .title{
+                font-weight: 700;
+                font-size: 18px;
+                line-height: 23px;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+            .present-price{
+                display: flex;
+                font-weight: 300;
+                font-size: 14px;
+                line-height: 16px;
+                justify-content: space-between;
+                margin-bottom: 15px
+            }
+            span{
+                position: absolute;
+                right: 20px;
+                bottom: 8px;
+            }
+            .expected-price{
+                font-weight: 300;
+                font-size: 14px;
+                line-height: 16px;
+                margin-bottom: 30px;
+                position: relative;
+                &_title{
+                    margin-bottom: 15px;
+                }
+                #priceInput{
+                    min-width: 400px;
+                    outline: none;
+                    border: 1px solid #D9E1E2;
+                    border-radius: 5px;
+                    height: 30px;
+                    padding-left: 10px;
+                }
+            }
+            .group-button{
+                display: flex;
+                p{
+                    flex: 1;
+                    text-align: center;
+                    border-radius: 3px;
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 18px;
+                    padding: 8px;
+                    cursor: pointer;
+                    &:hover{
+                        opacity: .7;
+                    }
+                }
+                .cancel{
+                    background: #FFFFFF;
+                    border: 1px solid #0066FF;
+                    color: #0066FF;
+                    margin-right: 20px;
+                }
+                .accept{
+                    background: #0066FF;
+                    color: #FFFFFF;
+                }
+            }
+            .error-text{
+                color: red;
+                position: absolute;
+                text-align: center;
+                width: 100%;
+                bottom: -22px;
+                font-size: 13px;
             }
         }
     }

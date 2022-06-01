@@ -22,6 +22,14 @@ function Side(props) {
                     name :'Phụ kiện',
                     value: 'ACCESSORIES'
                 },
+                {
+                    name :'Đồng hồ',
+                    value: 'WATCH'
+                }, 
+                {
+                    name :'Tất cả',
+                    value: 'all'
+                },
             ]
         },
         {
@@ -46,36 +54,14 @@ function Side(props) {
                 },
                 {
                     name :'Trên 13 triệu',
-                    value: '13000000-'
+                    value: '13000000-100000000'
                 },
+                {
+                    name :"Tất cả",
+                    value: 'all'
+                }
             ]
         },
-        {
-            title: 'Cửa hàng',
-            cate: 'shop',
-            listItem: [
-                {
-                    name :'FPT',
-                    value: 'FPT'
-                },
-                {
-                    name :'Topzone',
-                    value: 'TZ'
-                },
-                {
-                    name :'Hoàng Hà',
-                    value: 'HH'
-                },
-                {
-                    name :'Thế giới di động',
-                    value: 'TGDD'
-                },
-                {
-                    name :'Viettel',
-                    value: 'VT'
-                },
-            ]
-        }
     ];
 
     return ( 

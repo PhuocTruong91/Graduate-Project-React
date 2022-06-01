@@ -11,3 +11,11 @@ body{
 p{
     margin: 0;
 }
+.un-fade{
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+.fade{
+    opacity: 1;
+}
