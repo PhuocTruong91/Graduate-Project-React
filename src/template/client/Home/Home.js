@@ -3,8 +3,7 @@ import React from 'react';
 import Side from './components/Side'
 import Main from './components/Main'
 import BookPopup from './components/BookPopup'
-import { getItem, getItemByName } from '../../../controller';
-import { isLoadStore } from '../../../redux/isLoad';
+import { isLoadStore, isBookPopupStore } from '../../../redux/display';
 import { listItemStore } from '../../../redux/listItem';
 import '../../../css/home.scss';
 
@@ -12,8 +11,10 @@ function Home() {
     var [listItem, setListItem] = React.useState([]);
     var [tempList, setTempList] = React.useState([]);
     var [isLoad, setIsload] = React.useState(isLoadStore.getState());
-    var [displayPopup, setDisplayPopup] = React.useState(false);
     var [pricePopup, setPricePopup] = React.useState();
+    var [namePopup, setNamePopup] = React.useState();
+    var [idItem, setIdItem] = React.useState();
+    var [img, setImg] = React.useState();
     
     isLoadStore.subscribe(() => {setIsload(isLoadStore.getState())});
     listItemStore.subscribe( function() {
@@ -87,17 +88,20 @@ function Home() {
     } 
 
     function handleDisplayPopup(event){
-        if(event.target.attributes.value){
-            setPricePopup(event.target.attributes.value.value)
+        if(event && event.target.attributes.value){
+            setPricePopup(event.target.attributes.value.value);
+            setNamePopup(event.target.attributes.name.value);
+            setIdItem(event.target.attributes.id.value);
+            setImg(event.target.attributes.img.value);
         }
-        setDisplayPopup(!displayPopup)
+        isBookPopupStore.dispatch({type: 'DISPLAY_YES'});
     }
 
     return ( 
-        <div class="homepage">
+        <div id="homepage" class="homepage">
             <Side getListCate={getListCate}></Side>
             <Main handleDisplayPopup={handleDisplayPopup} isLoad={isLoad} listItem={listItem}></Main>
-            <BookPopup price={pricePopup} displayPopup={displayPopup} handleDisplayPopup={handleDisplayPopup}></BookPopup>
+            <BookPopup img={img} id={idItem} price={pricePopup} name={namePopup}></BookPopup>
         </div>
         
     );

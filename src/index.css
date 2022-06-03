@@ -5,8 +5,8 @@ body{
     font-family: "Mulish";
 }
 .content-body{
-    margin-top: 60px;
-    padding: 0 100px 0 200px;
+    margin-top: 40px;
+    padding: 0 30px 0 30px;
 }
 p{
     margin: 0;
@@ -22,4 +22,9 @@ p{
 
 .fade{
     opacity: 1;
+}
+
+.invalid{
+    background-color: gray !important;
+    pointer-events: none;
 }

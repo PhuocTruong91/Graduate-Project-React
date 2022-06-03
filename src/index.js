@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import './controller/index.js';
 import *  as font from  "@fontsource/mulish";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

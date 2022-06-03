@@ -1,7 +1,11 @@
 import React from 'react';
+import {bookItem} from '../../../../controller/Account';
+import { isBookPopupStore } from '../../../../redux/display';
+
 function BookPopup(props) {
     const [isvalid, setIsvalid] = React.useState(true);
     const [inputValue, setInputValue] = React.useState('');
+    const [displayPopup, setDisplaypopup] = React.useState(isBookPopupStore.getState());
     var pattern = /^[0-9]*$/i;
 
     function handleOnchange (event) {
@@ -13,10 +17,33 @@ function BookPopup(props) {
         }
         setInputValue(event.target.value.toString().replace(/\./g,'').replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."))
     }
+
+    function handleBookItem(){
+        var data = {
+            idUser: window.user ? window.user._id : '',
+            idProduct: props.id,
+            priceExpected: inputValue.replace(/\./g,''),
+            name: props.name,
+            img: props.img,
+        }
+        bookItem(data);
+    }
+
+    function handleClosePopup () {
+        isBookPopupStore.dispatch({type: 'DISPLAY_NO'})
+    }
+
+    isBookPopupStore.subscribe( () =>{
+        setDisplaypopup(isBookPopupStore.getState())
+    })
     return ( 
-        <div class={"book-popup fade " + (props.displayPopup ?  '' : 'un-fade')}>
+        <div class={"book-popup fade " + (displayPopup ?  '' : 'un-fade')} data-id={props.id}>
             <div class="book-popup_container">
                 <p class="title">Đặt lời nhắc</p>
+                <div class="present-product">
+                    <p>Tên sản phẩm</p>
+                    <p>{props.name}</p>
+                </div>
                 <div class="present-price">
                     <p class="present-price_title">Giá hiện tại</p>
                     <p>{(props.price ? props.price
@@ -31,8 +58,8 @@ function BookPopup(props) {
                     {!isvalid ? <p class="error-text">Giá trị không phù hợp</p> : ''}
                 </div>
                 <div class="group-button">
-                    <p class="cancel" onClick={props.handleDisplayPopup}>Hủy</p>
-                    <p class="accept">Đồng ý</p>
+                    <p class="cancel" onClick={handleClosePopup}>Hủy</p>
+                    <p class="accept" onClick={handleBookItem}>Đồng ý</p>
                 </div>
             </div>
         </div>

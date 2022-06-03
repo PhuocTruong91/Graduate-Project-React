@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
-import { getItemByName } from '../controller';
-import { isLoadStore } from './isLoad';
+import { getItemByName } from '../controller/ListItem';
+import { isLoadStore } from './display';
 
 export var actionType = {
     getbyname: 'GET_BY_NAME',
@@ -15,10 +15,12 @@ var listItemReducer =  async (state = [], action) =>{
                 .then(res =>{
                     state = res;
                     isLoadStore.dispatch({type: 'TOGGLE'});
-                    window.scrollTo({
-                        top:'869',
-                        behavior:'smooth'
-                    });     
+                    if(!action.isMain){
+                        window.scrollTo({
+                            top: (document.getElementById("background").getBoundingClientRect().bottom - 80).toString(),
+                            behavior:'smooth'
+                        });
+                    }
                 }) 
             return state;
         default:
