@@ -54,8 +54,12 @@ function Side(props) {
                     value: '7000000-13000000'
                 },
                 {
-                    name :'Trên 13 triệu',
-                    value: '13000000-100000000'
+                    name :'Từ 13 - 18 triệu',
+                    value: '13000000-18000000'
+                },
+                {
+                    name :'Trên 18 triệu',
+                    value: '18000000-10000000000'
                 },
                 {
                     name :"Tất cả",

@@ -129,6 +129,9 @@
                         max-width: 240px;
                         margin-bottom: 30px;
                         position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
                         .heart{
                             width: 20px;
                             position: absolute;
@@ -140,6 +143,8 @@
                             max-width: 100%;
                             background: #FFFFFF;
                             margin-bottom: 20px;
+                            flex: 1;
+                             object-fit: cover;
                         }
                         .name{
                             max-width: 240px;

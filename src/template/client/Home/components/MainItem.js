@@ -6,7 +6,11 @@ import {expectedItemStore} from '../../../../redux/user';
 function MainItem(props) {
     var list = props.listItem;
     var arrId = [];
-    var listFavourite = expectedItemStore.getState();
+    const [listFavourite, setListFavourite] = React.useState(expectedItemStore.getState());
+
+    expectedItemStore.subscribe(() => {
+        setListFavourite(expectedItemStore.getState());
+    })
 
     if(listFavourite){
         listFavourite.map( function (item) {
@@ -32,7 +36,7 @@ function MainItem(props) {
                 <p class="name">{item.name}</p>
                 <p class="price">
                     {item.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}{" "}
-                    vnd
+                    VNĐ
                 </p>
                 <a class="btn btn-detail" href={item.link} target="_blank">
                     Xem chi tiết
@@ -41,6 +45,8 @@ function MainItem(props) {
                     value={item.price}
                     name={item.name}
                     img={item.img}
+                    price={item.price}
+                    link={item.link}
                     onClick={props.handleDisplayPopup}
                     id={item._id}
                     class="btn btn-remind"

@@ -15,6 +15,7 @@ function Home() {
     var [namePopup, setNamePopup] = React.useState();
     var [idItem, setIdItem] = React.useState();
     var [img, setImg] = React.useState();
+    var [link, setLink] = React.useState();
     
     isLoadStore.subscribe(() => {setIsload(isLoadStore.getState())});
     listItemStore.subscribe( function() {
@@ -88,20 +89,26 @@ function Home() {
     } 
 
     function handleDisplayPopup(event){
-        if(event && event.target.attributes.value){
-            setPricePopup(event.target.attributes.value.value);
-            setNamePopup(event.target.attributes.name.value);
-            setIdItem(event.target.attributes.id.value);
-            setImg(event.target.attributes.img.value);
+        if(window.user){
+            if(event && event.target.attributes.value){
+                setPricePopup(event.target.attributes.value.value);
+                setNamePopup(event.target.attributes.name.value);
+                setIdItem(event.target.attributes.id.value);
+                setImg(event.target.attributes.img.value);
+                setLink(event.target.attributes.link.value);
+            }
+            isBookPopupStore.dispatch({type: 'DISPLAY_YES'});
+            document.getElementById('priceInput').value = '';
+        }else{
+            alert('Bạn phải đăng nhập để sử dụng chức năng này');
         }
-        isBookPopupStore.dispatch({type: 'DISPLAY_YES'});
     }
 
     return ( 
         <div id="homepage" class="homepage">
             <Side getListCate={getListCate}></Side>
             <Main handleDisplayPopup={handleDisplayPopup} isLoad={isLoad} listItem={listItem}></Main>
-            <BookPopup img={img} id={idItem} price={pricePopup} name={namePopup}></BookPopup>
+            <BookPopup link={link} img={img} id={idItem} price={pricePopup} name={namePopup}></BookPopup>
         </div>
         
     );

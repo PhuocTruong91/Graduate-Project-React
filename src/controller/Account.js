@@ -6,64 +6,63 @@ import axios from 'axios';
 
 export function createAccount(data) {
     var baseUrl = mainDomain + 'create';
-    isLoadStore.dispatch({type: 'TOGGLE'});
+    isLoadStore.dispatch({type: 'DISPLAY_YES'});
     axios.post(baseUrl, data)
         .then(function (res) {
-            isLoadStore.dispatch({type: 'TOGGLE'});
+            isLoadStore.dispatch({type: 'DISPLAY_NO'});
             if(res.data.success){
                 isSignInSuccessStore.dispatch({type: 'DISPLAY_YES'})
             }
-            console.log(res)
         })
         .catch(function (error) {
             console.log(error)
-            isLoadStore.dispatch({type: 'TOGGLE'});
+            isLoadStore.dispatch({type: 'DISPLAY_NO'});
         });
 }
 
 export function logIn(data) {
     var baseUrl = mainDomain + 'account';
-    isLoadStore.dispatch({type: 'TOGGLE'});
+    isLoadStore.dispatch({type: 'DISPLAY_YES'});
     axios.post(baseUrl, data)
-        .then(function (res) {
-            isLoadStore.dispatch({type: 'TOGGLE'});
+    .then(function (res) {
+        resStore.dispatch({type: 'SET_RES', data: res.data})
+        if(res.data.isValid === true){
             userStore.dispatch({type: 'SET_USER', data: res.data.user})
-            resStore.dispatch({type: 'SET_RES', data: res.data})
-            getUser();
+            expectedItemStore.dispatch({type: 'SET', data: res.data.user});
+        }
+        isLoadStore.dispatch({type: 'DISPLAY_NO'});
         })
         .catch(function (error) {
-            isLoadStore.dispatch({type: 'TOGGLE'});
+            isLoadStore.dispatch({type: 'DISPLAY_NO'});
             console.log(error)
         });
 }
 
 export function bookItem(data){
     var baseUrl = mainDomain + 'booking';
-    isLoadStore.dispatch({type: 'TOGGLE'});
+    isLoadStore.dispatch({type: 'DISPLAY_YES'});
     axios.post(baseUrl, data)
         .then(function (res) {
-            isLoadStore.dispatch({type: 'TOGGLE'});
+            isLoadStore.dispatch({type: 'DISPLAY_NO'});
             isBookPopupStore.dispatch({type: 'TOGGLE'})
             getUser();
         })
         .catch(function (error) {
-            isLoadStore.dispatch({type: 'TOGGLE'});
+            isLoadStore.dispatch({type: 'DISPLAY_NO'});
             console.log(error)
         });
 }
 
 export function getUser(){
     var baseUrl = mainDomain + 'user?userId=' + (window.user ? window.user._id : '');
-   
     if(!window.user === true) return;
-    isLoadStore.dispatch({type: 'TOGGLE'});
     axios.get(baseUrl)
         .then(function (res) {
-            isLoadStore.dispatch({type: 'TOGGLE'});
+            isLoadStore.dispatch({type: 'DISPLAY_NO'});
             expectedItemStore.dispatch({type: 'SET', data: res.data.result});
         })
         .catch(function (error) {
-            isLoadStore.dispatch({type: 'TOGGLE'});
+            isLoadStore.dispatch({type: 'DISPLAY_NO'});
             console.log(error)
         });
 }
