@@ -27,7 +27,16 @@ var expectedItemReducer = (state = [], action) => {
             return  state;
     }
 }
+var listAccount = (state = [], action) => {
+    switch(action.type){
+        case 'SET':
+            return action.data;
+        default:
+            return  state;
+    }
+}
 
 export var userStore = createStore(userReducer);
 export var resStore = createStore(resReducer);
 export var expectedItemStore = createStore(expectedItemReducer);
+export var listAccountStore = createStore(listAccount);

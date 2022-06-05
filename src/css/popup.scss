@@ -1,0 +1,39 @@
+.popup-success{
+    position: fixed;
+    background: rgba(0,0,0,.7);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    z-index: 1105;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s;
+    .container{
+        padding: 30px 80px;
+        border-radius: 8px;
+        text-align: center;
+        position: relative;
+        svg{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    }
+}
+.checkemail{
+    .title{
+        margin-bottom: 10px;
+    }
+    input{
+        margin-bottom: 20px;
+    }
+    .resent{
+        text-align: center;
+        font-size: 12px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+}
+

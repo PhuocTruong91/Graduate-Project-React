@@ -1,7 +1,7 @@
 import {mainDomain} from './config';
 import {isLoadStore} from '../redux/display'
-import {isSignInSuccessStore, isBookPopupStore} from '../redux/display'
-import {userStore, resStore, expectedItemStore} from '../redux/user'
+import {isSignInSuccessStore, isBookPopupStore, isCheckEmailStore} from '../redux/display'
+import {userStore, resStore, expectedItemStore, listAccountStore} from '../redux/user'
 import axios from 'axios';
 
 export function createAccount(data) {
@@ -12,6 +12,7 @@ export function createAccount(data) {
             isLoadStore.dispatch({type: 'DISPLAY_NO'});
             if(res.data.success){
                 isSignInSuccessStore.dispatch({type: 'DISPLAY_YES'})
+                isCheckEmailStore.dispatch({type: 'DISPLAY_NO'});
             }
         })
         .catch(function (error) {
@@ -65,4 +66,17 @@ export function getUser(){
             isLoadStore.dispatch({type: 'DISPLAY_NO'});
             console.log(error)
         });
+}
+
+export function getListAccount(){
+    var baseUrl = mainDomain + 'listaccount';
+    axios.get(baseUrl)
+        .then(function (res){
+            listAccountStore.dispatch({type: 'SET', data: res.data})
+        })
+        .catch( function(err){
+            isLoadStore.dispatch({type: 'DISPLAY_NO'});
+            console.log(err)
+        }
+    )
 }

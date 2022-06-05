@@ -1,6 +1,10 @@
 import React from 'react';
-import {createAccount, logIn} from '../../../../controller/Account';
+import {logIn} from '../../../../controller/Account';
+import {checkEmail} from '../../../../controller/Email';
 import {resStore} from '../../../../redux/user';
+import {codeConfirmStore} from '../../../../redux/email';
+import {listAccountStore} from '../../../../redux/user';
+import {getListAccount} from '../../../../controller/Account';
 
 function Login(props) {
     const [signin, setSignin] = React.useState(true);
@@ -8,12 +12,15 @@ function Login(props) {
     const [disableSignin, setDisableSignin] = React.useState(true);
     const [err, setError] = React.useState(false);
     const [res, setRes] = React.useState(resStore.getState());
+    const [listAccount, setListAccount] = React.useState(listAccountStore.getState());
+    const [errEmail, setErrEmail] = React.useState(false);
 
     function handleClick(){
         setSignin(!signin);
+        getListAccount();
     }
 
-    function handleSignUp(){
+    async function handleSignUp(){
         var obj = {
             name : document.querySelector('.sign-up #name').value,
             username: document.querySelector('.sign-up #username').value,
@@ -21,7 +28,21 @@ function Login(props) {
             phone: document.querySelector('.sign-up #phone').value,
             password: document.querySelector('.sign-up #password').value,
         }
-        createAccount(obj)
+        var listEmail = []
+
+        listAccount.map((item) =>{
+            listEmail.push(item.email);
+        })
+        
+
+        if(listEmail.includes(obj.email)){
+            setErrEmail(true);
+        }else{
+            setErrEmail(false);
+            var number = (Math.floor(Math.random() * 9999999) + 1000000).toString();
+            checkEmail(obj.email, number)
+            codeConfirmStore.dispatch({type: 'CREATE', data: {codeConfirm: number, obj: obj}});
+        }
     }
 
     function handleSignIn(){
@@ -38,13 +59,16 @@ function Login(props) {
         var phone = document.querySelector('.sign-up #phone').value;
         var password = document.querySelector('.sign-up #password').value;
         var name = document.querySelector('.sign-up #name').value;
-        if(username.length > 0 && email.length > 0 && phone.length > 0 && password.length > 0 && name.length > 0){
+
+        var pattern = '.*@.*mail.com';
+        var resultEmail = (email).match(pattern);
+
+        if(username.length > 0 && email.length > 0 && phone.length > 0 && password.length > 0 && name.length > 0 && resultEmail !== null){
             setDisableSignup(false)
         }else{
             setDisableSignup(true)
         }
     }
-
     function checkSignin(){
         var username = document.querySelector('.sign-in #username').value;
         var pass= document.querySelector('.sign-in #password').value;
@@ -55,6 +79,9 @@ function Login(props) {
         }
     }
 
+    listAccountStore.subscribe(() =>{
+        setListAccount(listAccountStore.getState());
+    })
     resStore.subscribe(() => {
         setRes(resStore.getState());
         var response = resStore.getState();
@@ -82,6 +109,7 @@ function Login(props) {
                     <p class="title">Đăng ký</p>
                     <input id="name" onChange={checkSignup} placeholder="Họ và tên"/>
                     <input id="email" onChange={checkSignup} placeholder="Email"/>
+                    {errEmail === true ? <p class="error">Email đã tồn tại</p> : ''}
                     <input id="phone" onChange={checkSignup} placeholder="Số điện thoại"/>
                     <input id="username" onChange={checkSignup} placeholder="Tên đăng nhập"/>
                     <input type="password" onChange={checkSignup} placeholder="Mật khẩu" id="password"/>

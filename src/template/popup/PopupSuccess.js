@@ -1,6 +1,6 @@
 import React from 'react';
-import {isSignInSuccessStore} from '../../../../redux/display';
-import success from '../../../../images/success.png'
+import {isSignInSuccessStore} from '../../redux/display';
+import success from '../../images/success.png'
 function PopupSuccess(props) {
     const [display, setDisplay] = React.useState(isSignInSuccessStore.getState());
 

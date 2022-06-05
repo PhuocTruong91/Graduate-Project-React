@@ -3,7 +3,6 @@ import * as React from "react";
 import logo from '../../../images/logo.png';
 import '../../../css/header.scss';
 import Login from './components/Login';
-import PopupSuccess from './components/PopupSuccess';
 import FavouriteList from './components/FavouriteList';
 import {listItemStore, actionType} from '../../../redux/listItem';
 import {userStore, expectedItemStore} from '../../../redux/user';
@@ -82,7 +81,7 @@ function Header() {
                                 <path d="M13.3334 14.1666H6.66675" stroke="#1F2125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M8.33341 7.5H7.50008H6.66675" stroke="#1F2125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            {listFavourite ? <p>{listFavourite.length}</p> : ''}
+                            {listFavourite &&  listFavourite.length > 0? <p>{listFavourite.length}</p> : ''}
                         </div>
                     </div> : 
                     <p id="login-header" className="login" onClick={toggleLogin}>Đăng nhập</p>
@@ -98,7 +97,6 @@ function Header() {
                     </div>
             </div>
             <Login display={display}/>
-            <PopupSuccess></PopupSuccess>
             <FavouriteList displayFavouriteList={displayFavouriteList} listFavourite={listFavourite}></FavouriteList>
         </div>
     );
