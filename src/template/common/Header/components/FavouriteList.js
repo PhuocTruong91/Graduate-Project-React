@@ -6,7 +6,7 @@ function FavouriteList(props) {
                     props.listFavourite ? 
                     props.listFavourite.map ( (item) => {
                         return(
-                            <a href={item.link} target="_blank" rel="noreferrer">
+                            <a href={item.link} target="_blank" rel="noreferrer" id={item.idProduct}>
                                 <div class="favourite-item">
                                     <img src={item.img}></img>
                                     <div className="group-info">
