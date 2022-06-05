@@ -33,6 +33,7 @@ function BookPopup(props) {
             link: props.link,
             name: props.name,
             img: props.img,
+            shop: props.shop
         }
         bookItem(data);
         setInputValue('');

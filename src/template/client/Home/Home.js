@@ -16,6 +16,7 @@ function Home() {
     var [idItem, setIdItem] = React.useState();
     var [img, setImg] = React.useState();
     var [link, setLink] = React.useState();
+    var [shop, setShop] = React.useState();
     
     isLoadStore.subscribe(() => {setIsload(isLoadStore.getState())});
     listItemStore.subscribe( function() {
@@ -44,11 +45,33 @@ function Home() {
         }
 
         var temp = tempList.filter(function (item){
-            if(checkedCate.includes('all')){
-                if(checkedPrice.includes('all')){
-                    return item;
+            if(checkedCate.length === 0 && checkedPrice.length === 0){
+                return item;
+            }else{
+                if(checkedCate.includes('all')){
+                    if(checkedPrice.includes('all')){
+                        return item;
+                    }else{
+                        if(checkedPrice.length !== 0){
+                            for (let index = 0; index < checkedPrice.length; index++) {
+                                const priceItem = checkedPrice[index];
+                                var tempItem = priceItem.split('-');
+                                var priceStart = tempItem[0];
+                                var priceEnd = tempItem[1];
+                                if(item.price >= priceStart && item.price <= priceEnd) return item;
+                            }
+                        }else{
+                            return item;
+                        }
+                    }
+                }else if(checkedPrice.includes('all')){
+                    if(checkedCate.length === 0){
+                        return item;
+                    }else{
+                        return checkedCate.includes(item.category);
+                    }
                 }else{
-                    if(checkedPrice.length !== 0){
+                    if(checkedCate.length === 0){
                         for (let index = 0; index < checkedPrice.length; index++) {
                             const priceItem = checkedPrice[index];
                             var tempItem = priceItem.split('-');
@@ -56,30 +79,16 @@ function Home() {
                             var priceEnd = tempItem[1];
                             if(item.price >= priceStart && item.price <= priceEnd) return item;
                         }
+                    }else if(checkedPrice.length === 0 ){
+                        return checkedCate.includes(item.category)
                     }else{
-                        return item;
-                    }
-                }
-            }else if(checkedPrice.includes('all')){
-                return checkedCate.includes(item.category);
-            }else{
-                if(checkedCate.length === 0){
-                    for (let index = 0; index < checkedPrice.length; index++) {
-                        const priceItem = checkedPrice[index];
-                        var tempItem = priceItem.split('-');
-                        var priceStart = tempItem[0];
-                        var priceEnd = tempItem[1];
-                        if(item.price >= priceStart && item.price <= priceEnd) return item;
-                    }
-                }else if(checkedPrice.length === 0 ){
-                    return checkedCate.includes(item.category)
-                }else{
-                    for (let index = 0; index < checkedPrice.length; index++) {
-                        const priceItem = checkedPrice[index];
-                        var tempItem = priceItem.split('-');
-                        var priceStart = tempItem[0];
-                        var priceEnd = tempItem[1];
-                        if(item.price >= priceStart && item.price <= priceEnd && checkedCate.includes(item.category)) return item;
+                        for (let index = 0; index < checkedPrice.length; index++) {
+                            const priceItem = checkedPrice[index];
+                            var tempItem = priceItem.split('-');
+                            var priceStart = tempItem[0];
+                            var priceEnd = tempItem[1];
+                            if(item.price >= priceStart && item.price <= priceEnd && checkedCate.includes(item.category)) return item;
+                        }
                     }
                 }
             }
@@ -94,8 +103,9 @@ function Home() {
                 setPricePopup(event.target.attributes.value.value);
                 setNamePopup(event.target.attributes.name.value);
                 setIdItem(event.target.attributes.id.value);
-                setImg(event.target.attributes.img.value);
+                setImg((event.target.attributes.img ? event.target.attributes.img.value : ''));
                 setLink(event.target.attributes.link.value);
+                setShop(event.target.attributes.shop.value);
             }
             isBookPopupStore.dispatch({type: 'DISPLAY_YES'});
             document.getElementById('priceInput').value = '';
@@ -108,7 +118,7 @@ function Home() {
         <div id="homepage" class="homepage">
             <Side getListCate={getListCate}></Side>
             <Main handleDisplayPopup={handleDisplayPopup} isLoad={isLoad} listItem={listItem}></Main>
-            <BookPopup link={link} img={img} id={idItem} price={pricePopup} name={namePopup}></BookPopup>
+            <BookPopup shop={shop} link={link} img={img} id={idItem} price={pricePopup} name={namePopup}></BookPopup>
         </div>
         
     );
