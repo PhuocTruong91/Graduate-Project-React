@@ -120,10 +120,6 @@ function Home() {
             <Header></Header>
             <div class="content-body">
                 <div id="homepage" class="homepage">
-                    
-                    
-
-                    
                     <Side getListCate={getListCate}></Side>
                     <Main handleDisplayPopup={handleDisplayPopup} isLoad={isLoad} listItem={listItem}></Main>
                     <BookPopup shop={shop} link={link} img={img} id={idItem} price={pricePopup} name={namePopup}></BookPopup>

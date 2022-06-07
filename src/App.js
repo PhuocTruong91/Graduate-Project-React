@@ -11,7 +11,7 @@ function App() {
 		<div>
 			<BrowserRouter>
 				<Routes>
-					<Route index element={<Home />}></Route>
+					<Route path='Graduate-Project-React' element={<Home />}></Route>
 					<Route path='admin' element={<Admin />}></Route>
 				</Routes>
 			</BrowserRouter>

@@ -42,11 +42,13 @@ function Main(props) {
                         <BeatLoader color="#fff" size={30} />
                     </div>  
                     :
+                    ''
+                }
+                {
                     listShop ? listShop.map(item => {
                         return <MainItem handleDisplayPopup={props.handleDisplayPopup} store= {item.name} img={item.img} listItem={item.listItem} mainList={props.listItem}></MainItem>
                     }) : ''
                 }
-                
             </div>
         </div>
     );

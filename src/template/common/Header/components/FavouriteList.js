@@ -1,3 +1,5 @@
+import noimg from '../../../../images/noimg.png'
+
 function FavouriteList(props) {
     return ( 
         <div className={"favourite-list fade " + (props.displayFavouriteList ? '' : 'in-active')}>
@@ -8,7 +10,7 @@ function FavouriteList(props) {
                         return(
                             <a href={item.link} target="_blank" rel="noreferrer" id={item.idProduct}>
                                 <div class="favourite-item">
-                                    <img src={item.img}></img>
+                                    <img src={item.img ? item.img : noimg}></img>
                                     <div className="group-info">
                                         <p className="title">{item.name}</p>
                                         <div className="group-price old">

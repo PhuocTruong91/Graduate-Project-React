@@ -45,7 +45,7 @@ export function bookItem(data){
     axios.post(baseUrl, data)
         .then(function (res) {
             isLoadStore.dispatch({type: 'DISPLAY_NO'});
-            isBookPopupStore.dispatch({type: 'TOGGLE'})
+           
             getUser();
         })
         .catch(function (error) {
@@ -56,10 +56,12 @@ export function bookItem(data){
 
 export function getUser(){
     var baseUrl = mainDomain + 'user?userId=' + (window.user ? window.user._id : '');
+    isLoadStore.dispatch({type: 'DISPLAY_YES'});
     if(!window.user === true) return;
     axios.get(baseUrl)
         .then(function (res) {
             isLoadStore.dispatch({type: 'DISPLAY_NO'});
+            isBookPopupStore.dispatch({type: 'DISPLAY_NO'})
             expectedItemStore.dispatch({type: 'SET', data: res.data.result});
         })
         .catch(function (error) {
