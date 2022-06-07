@@ -1,0 +1,21 @@
+.header-admin{
+    .admin{
+        display: flex;
+        .side-admin{
+            min-width: 300px;
+            .container{
+                .user-info{
+                    display: flex;
+                    padding: 30px;
+                    align-items: center;
+                    svg{
+                        margin-right: 20px;
+                    }
+                    .title{
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

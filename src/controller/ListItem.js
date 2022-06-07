@@ -20,7 +20,7 @@ export function  getItem(data = {}){
     return result;
 }
 
-export async function  getItemByName(data = ''){
+export async function getItemByName(data = ''){
     var result ={}
     var baseUrl = mainDomain + 'search?name=' + data;
     

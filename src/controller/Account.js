@@ -69,7 +69,7 @@ export function getUser(){
 }
 
 export function getListAccount(){
-    var baseUrl = mainDomain + 'listaccount';
+    var baseUrl = mainDomain + '/list/account';
     axios.get(baseUrl)
         .then(function (res){
             listAccountStore.dispatch({type: 'SET', data: res.data})

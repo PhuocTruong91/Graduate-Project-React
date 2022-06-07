@@ -6,6 +6,7 @@ import BookPopup from './components/BookPopup'
 import { isLoadStore, isBookPopupStore } from '../../../redux/display';
 import { listItemStore } from '../../../redux/listItem';
 import '../../../css/home.scss';
+import Header from '../../common/Header/Header'
 
 function Home() {
     var [listItem, setListItem] = React.useState([]);
@@ -115,12 +116,20 @@ function Home() {
     }
 
     return ( 
-        <div id="homepage" class="homepage">
-            <Side getListCate={getListCate}></Side>
-            <Main handleDisplayPopup={handleDisplayPopup} isLoad={isLoad} listItem={listItem}></Main>
-            <BookPopup shop={shop} link={link} img={img} id={idItem} price={pricePopup} name={namePopup}></BookPopup>
+        <div>
+            <Header></Header>
+            <div class="content-body">
+                <div id="homepage" class="homepage">
+                    
+                    
+
+                    
+                    <Side getListCate={getListCate}></Side>
+                    <Main handleDisplayPopup={handleDisplayPopup} isLoad={isLoad} listItem={listItem}></Main>
+                    <BookPopup shop={shop} link={link} img={img} id={idItem} price={pricePopup} name={namePopup}></BookPopup>
+                </div>
+            </div>
         </div>
-        
     );
 }
 export default Home;    
