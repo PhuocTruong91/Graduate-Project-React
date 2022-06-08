@@ -6,13 +6,10 @@ import {listTrackingStore} from '../redux/listTracking';
 export async function  getListTracking(){
     var result ={}
     var baseUrl = mainDomain + 'list/tracking';
-    isLoadStore.dispatch({type: 'DISPLAY_YES'});
-
     result = await axios.get(baseUrl)
     .then(res => {
         if(res.data.success === true){
             listTrackingStore.dispatch({type: 'SET', data: res.data.result})
-            isLoadStore.dispatch({type: 'DISPLAY_NO'});
         }
     })
     .catch(err => {

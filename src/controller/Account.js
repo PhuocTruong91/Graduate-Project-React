@@ -71,14 +71,11 @@ export function getUser(){
 
 export function getListAccount(){
     var baseUrl = mainDomain + 'list/account';
-    isLoadStore.dispatch({type: 'DISPLAY_YES'});
     axios.get(baseUrl)
         .then(function (res){
             listAccountStore.dispatch({type: 'SET', data: res.data});
-            isLoadStore.dispatch({type: 'DISPLAY_NO'});
         })
         .catch( function(err){
-            isLoadStore.dispatch({type: 'DISPLAY_NO'});
             console.log(err)
         }
     )

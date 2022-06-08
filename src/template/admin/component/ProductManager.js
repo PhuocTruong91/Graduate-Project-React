@@ -1,48 +1,48 @@
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
-import {listTrackingStore} from '../../../redux/listTracking'
+import Section2 from './Section2'
+import Section3 from './Section3'
 import React from 'react';
 
 function ProductManager(props) {
-    const [listTracking, setListTracking] = React.useState(listTrackingStore.getState());
+    const listTracking = props.listTracking;
 
     var lastItem = listTracking ? listTracking[listTracking.length - 1] : {};
     var penultimateItem = listTracking ? listTracking[listTracking.length - 2] : {};
-    // var compareTotal = lastItem.data_total ? (lastItem.data_total / penultimateItem.data_total > 1 ? true : false) : '';
-    // var compareInsert = lastItem.data_total ? (lastItem.data_total / penultimateItem.data_total > 1 ? true : false) : '';
-    // var compareUpdate = lastItem.data_total ? (lastItem.data_total / penultimateItem.data_total > 1 ? true : false) : '';
-    listTrackingStore.subscribe(() =>{
-        setListTracking(listTrackingStore.getState())
-        console.log(listTrackingStore.getState())
-    })
+    var compareTotal = lastItem.data_total ? (lastItem.data_total / penultimateItem.data_total > 1 ? true : false) : '';
+    var compareInsert = lastItem.data_total ? (lastItem.data_total / penultimateItem.data_total > 1 ? true : false) : '';
+    var compareUpdate = lastItem.data_total ? (lastItem.data_total / penultimateItem.data_total > 1 ? true : false) : '';
 
     return ( 
         <div className="product-manager">
             <div className="product-manager_container">
                 <section className="latest-info-data">
-                    <div class="latest-info-data_item">
-                        <div>
-                            <p className='title'>Total</p>
-                            <p className="percent"> <CaretUpOutlined /> {lastItem && penultimateItem? (lastItem.data_total / penultimateItem.data_total).toFixed(1): ''} %</p>
+                    <p className='section-title'>Cập nhật ngày {new Date().toLocaleDateString()}</p>
+                    <div>
+                        <div class="latest-info-data_item">
+                            <div>
+                                <p className='title'>Tổng cộng dữ liệu</p>
+                                <p className={"percent " + (compareTotal > 0 ? 'increase' : 'decrease')}> {compareTotal > 0 ? <CaretUpOutlined /> : <CaretDownOutlined/>} {lastItem && penultimateItem? (lastItem.data_total / penultimateItem.data_total).toFixed(1): ''} %</p>
+                            </div>
+                            <p className="amount">{lastItem ? lastItem.data_total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") : ''}</p>
                         </div>
-                        <p className="amount">{lastItem ? lastItem.data_total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") : ''}</p>
-                    </div>
-                    <div class="latest-info-data_item">
-                        <div>
-                            <p className='title'>New data</p>
-                            <p className="percent"> <CaretUpOutlined /> 10 %</p>
+                        <div class="latest-info-data_item">
+                            <div>
+                                <p className='title'>Dữ liệu được thêm</p>
+                                <p className={"percent " + (compareInsert > 0 ? 'increase' : 'decrease')}> {compareInsert > 0 ? <CaretUpOutlined /> : <CaretDownOutlined/>} {lastItem && penultimateItem? (lastItem.insert_total / penultimateItem.insert_total).toFixed(1): ''} %</p>
+                            </div>
+                            <p className="amount">{lastItem.insert_total}</p>
                         </div>
-                        <p className="amount">90</p>
-                    </div>
-                    <div class="latest-info-data_item">
-                        <div>
-                            <p className='title'>New data</p>
-                            <p className="percent"> <CaretUpOutlined /> 10 %</p>
+                        <div class="latest-info-data_item">
+                            <div>
+                                <p className='title'>Dữ liệu được cập nhật</p>
+                                <p className={"percent " + (compareUpdate > 0 ? 'increase' : 'decrease')}> {compareUpdate > 0 ? <CaretUpOutlined /> : <CaretDownOutlined/>} {lastItem && penultimateItem? (lastItem.update_total / penultimateItem.update_total).toFixed(1): ''} %</p>
+                            </div>
+                            <p className="amount">{lastItem.update_total}</p>
                         </div>
-                        <p className="amount">90</p>
                     </div>
                 </section>
-                <section className="daily-data"></section>
-                <section className="total-data"></section>
+                <Section2 listTracking={listTracking}></Section2>
+                <Section3 listTracking={listTracking}></Section3>
             </div>
         </div>
      );

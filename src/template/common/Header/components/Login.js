@@ -28,6 +28,7 @@ function Login(props) {
             email: document.querySelector('.sign-up #email').value,
             phone: document.querySelector('.sign-up #phone').value,
             password: document.querySelector('.sign-up #password').value,
+            type: 'user',
         }
         var listEmail = [];
         var listUser = [];

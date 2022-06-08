@@ -12,7 +12,7 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path='/Graduate-Project-React' element={<Home />}></Route>
-					<Route path='admin' element={<Admin />}></Route>
+					<Route path='/Graduate-Project-React/admin' element={<Admin />}></Route>
 				</Routes>
 			</BrowserRouter>
 			<IndexPopup></IndexPopup>
