@@ -36,7 +36,6 @@ function BookPopup(props) {
             shop: props.shop
         }
         bookItem(data);
-        setInputValue('');
     }
 
     function handleClosePopup () {
@@ -45,6 +44,7 @@ function BookPopup(props) {
 
     isBookPopupStore.subscribe( () =>{
         setDisplaypopup(isBookPopupStore.getState())
+        if(isBookPopupStore.getState() === false) setInputValue('');
     })
     return ( 
         <div class={"book-popup fade " + (displayPopup ?  '' : 'un-fade')} data-id={props.id}>

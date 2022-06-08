@@ -2,8 +2,9 @@
   "name": "graduation-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://phuoctruong91.github.io/Graduate-Project-React/",
+  "homepage": "https://searchengine",
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@fontsource/mulish": "^4.5.10",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",

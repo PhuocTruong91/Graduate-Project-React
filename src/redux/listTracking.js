@@ -1,4 +1,5 @@
 import { createStore } from "redux";
+import {getListTracking} from '../controller/ListTracking'
 
 var listTrackingReducer = (state = [], action) => {
     switch(action.type){

@@ -241,6 +241,20 @@
             color: red;
             font-size: 13px;
         }
+        .group-error{
+            position: relative;
+            .error-text{
+                position: absolute;
+                top: 50%;
+                right: -105px;
+                transform: translateY(-50%);
+                font-size: 13px;
+                color: red;
+                &.user{
+                    right: -160px;
+                }
+            }
+        }
     }
     .favourite-list{
         position: fixed;

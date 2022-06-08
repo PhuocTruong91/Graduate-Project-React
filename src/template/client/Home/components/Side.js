@@ -28,6 +28,10 @@ function Side(props) {
                     value: 'WATCH'
                 }, 
                 {
+                    name :'Máy tính bảng',
+                    value: 'TABLET'
+                }, 
+                {
                     name :'Tất cả',
                     value: 'all'
                 },

@@ -11,7 +11,7 @@ function MainItem(props) {
     expectedItemStore.subscribe(() => {
         setListFavourite(expectedItemStore.getState());
     })
-    console.log(listFavourite)
+    
     if(listFavourite){
         listFavourite.map( function (item) {
             arrID.push(item.idProduct ? item.idProduct : '');

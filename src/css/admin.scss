@@ -1,18 +1,65 @@
-.header-admin{
-    .admin{
-        display: flex;
-        .side-admin{
-            min-width: 300px;
-            .container{
-                .user-info{
+.admin{
+    display: flex;
+    min-height: 100vh;
+    .side-admin{
+        min-width: 300px;
+        background: #404e67;
+        color: white;
+        .container{
+            background-color: transparent ;
+            .user-info{
+                padding: 20px 30px;
+                display: flex;
+                align-items: center;
+                border-bottom: 10px solid #EFEFEF;
+                svg{
+                    margin-right: 20px;
+                }
+                .title{
+                    font-size: 20px;
+                }
+            }
+            .admin-option{
+                padding: 20px 30px;
+                &_item{
+                    margin-bottom: 15px;
+                }
+            }
+        }
+    }
+    .admin-main{
+        flex: 1;
+        padding: 30px;
+        .product-manager{
+            &_container{
+                .latest-info-data{
                     display: flex;
-                    padding: 30px;
-                    align-items: center;
-                    svg{
+                    &_item{
                         margin-right: 20px;
-                    }
-                    .title{
-                        font-size: 20px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 15px 20px;
+                        border-bottom: 3px solid #197ef2;
+                        border-radius: 5px;
+                        box-shadow: 1px 1px 6px rgba(0,0,0, .1);
+                        > div {
+                            margin-right: 50px;
+                            .title{
+                                font-weight: normal;
+                                margin-bottom: 10px;
+                                font-size: 17px;
+                            }
+                            .percent{
+                                color: green;
+                                font-size: 20px;
+                                font-weight: bold;
+                            }
+                        }
+                        .amount{
+                            font-size: 30px;
+                            font-weight: bold;
+                        }
                     }
                 }
             }

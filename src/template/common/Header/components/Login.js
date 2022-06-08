@@ -14,6 +14,7 @@ function Login(props) {
     const [res, setRes] = React.useState(resStore.getState());
     const [listAccount, setListAccount] = React.useState(listAccountStore.getState());
     const [errEmail, setErrEmail] = React.useState(false);
+    const [errUser, setErrUser] = React.useState(false);
 
     function handleClick(){
         setSignin(!signin);
@@ -28,22 +29,30 @@ function Login(props) {
             phone: document.querySelector('.sign-up #phone').value,
             password: document.querySelector('.sign-up #password').value,
         }
-        var listEmail = []
-
-        listAccount.map((item) =>{
+        var listEmail = [];
+        var listUser = [];
+        listAccount.map((item) => {
             listEmail.push(item.email);
+            listUser.push(item.username);
         })
-        
 
-        if(listEmail.includes(obj.email)){
-            setErrEmail(true);
+        if(listEmail.includes(obj.email) || listUser.includes(obj.username)){
+            if(listEmail.includes(obj.email)){
+                setErrEmail(true);  
+            } 
+            if(listUser.includes(obj.username)){
+                setErrUser(true);
+            } 
+            
         }else{
             setErrEmail(false);
+            setErrUser(false);
             var number = (Math.floor(Math.random() * 9999999) + 1000000).toString();
             checkEmail(obj.email, number)
             codeConfirmStore.dispatch({type: 'CREATE', data: {codeConfirm: number, obj: obj}});
         }
     }
+
 
     function handleSignIn(){
         var obj = {
@@ -108,10 +117,15 @@ function Login(props) {
                 <div class={"sign-up fade " + (signin === true ? 'un-fade d-none' : '')}>
                     <p class="title">Đăng ký</p>
                     <input id="name" onChange={checkSignup} placeholder="Họ và tên"/>
-                    <input id="email" onChange={checkSignup} placeholder="Email"/>
-                    {errEmail === true ? <p class="error">Email đã tồn tại</p> : ''}
+                    <div class="group-error">
+                        <input id="email" onChange={checkSignup} placeholder="Email"/>
+                        {errEmail === true ? <p class="error-text email">Email đã tồn tại</p> : ''}
+                    </div>
                     <input id="phone" onChange={checkSignup} placeholder="Số điện thoại"/>
-                    <input id="username" onChange={checkSignup} placeholder="Tên đăng nhập"/>
+                    <div class="group-error">
+                        <input id="username" onChange={checkSignup} placeholder="Tên đăng nhập"/>
+                        {errUser === true ? <p class="error-text user">Tên đăng nhập đã tồn tại</p> : ''}
+                    </div>
                     <input type="password" onChange={checkSignup} placeholder="Mật khẩu" id="password"/>
                     <p id="btnSignUp"  class={"btn-first " + (disableSignup ? 'invalid' : '')} onClick={handleSignUp}>Đăng ký</p>
                     <div class="line">Đã có tài khoản?</div>

@@ -90,19 +90,6 @@
             }
         }
         .content{
-            .loader{
-                text-align: center;
-                position: fixed;
-                background: rgba(0,0,0,.5);
-                width: 100vw;
-                height: 100vh;
-                top: 0;
-                left: 0;
-                z-index: 2000;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
             .shop{
                 .logo-contanier{
                     background: #EFEFEF;
@@ -332,4 +319,17 @@
             }
         }
     }
+}
+.loader{
+    text-align: center;
+    position: fixed;
+    background: rgba(0,0,0,.5);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

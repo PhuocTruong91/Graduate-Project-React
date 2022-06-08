@@ -1,7 +1,11 @@
-function MainAdmin() {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProductManager from "./ProductManager";
+import UserManager from "./UserManager";
+
+function MainAdmin(props) {
     return ( 
         <div className="admin-main">
-            <h1>Main</h1>
+            <ProductManager listTracking={props.listTracking}></ProductManager>
         </div>
      );
 }

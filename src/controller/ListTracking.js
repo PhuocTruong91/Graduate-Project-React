@@ -3,11 +3,9 @@ import {mainDomain} from './config';
 import {isLoadStore} from '../redux/display';
 import {listTrackingStore} from '../redux/listTracking';
 
-getListTracking()
-
-async function  getListTracking(){
+export async function  getListTracking(){
     var result ={}
-    var baseUrl = mainDomain + '/list/tracking';
+    var baseUrl = mainDomain + 'list/tracking';
     isLoadStore.dispatch({type: 'DISPLAY_YES'});
 
     result = await axios.get(baseUrl)

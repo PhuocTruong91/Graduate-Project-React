@@ -3,7 +3,7 @@ import React from 'react';
 import Side from './components/Side'
 import Main from './components/Main'
 import BookPopup from './components/BookPopup'
-import { isLoadStore, isBookPopupStore } from '../../../redux/display';
+import { isBookPopupStore } from '../../../redux/display';
 import { listItemStore } from '../../../redux/listItem';
 import '../../../css/home.scss';
 import Header from '../../common/Header/Header'
@@ -11,7 +11,7 @@ import Header from '../../common/Header/Header'
 function Home() {
     var [listItem, setListItem] = React.useState([]);
     var [tempList, setTempList] = React.useState([]);
-    var [isLoad, setIsload] = React.useState(isLoadStore.getState());
+    
     var [pricePopup, setPricePopup] = React.useState();
     var [namePopup, setNamePopup] = React.useState();
     var [idItem, setIdItem] = React.useState();
@@ -19,7 +19,7 @@ function Home() {
     var [link, setLink] = React.useState();
     var [shop, setShop] = React.useState();
     
-    isLoadStore.subscribe(() => {setIsload(isLoadStore.getState())});
+    
     listItemStore.subscribe( function() {
         listItemStore.getState().then( (res) => {
             setListItem(res);
@@ -121,7 +121,7 @@ function Home() {
             <div class="content-body">
                 <div id="homepage" class="homepage">
                     <Side getListCate={getListCate}></Side>
-                    <Main handleDisplayPopup={handleDisplayPopup} isLoad={isLoad} listItem={listItem}></Main>
+                    <Main handleDisplayPopup={handleDisplayPopup} listItem={listItem}></Main>
                     <BookPopup shop={shop} link={link} img={img} id={idItem} price={pricePopup} name={namePopup}></BookPopup>
                 </div>
             </div>
