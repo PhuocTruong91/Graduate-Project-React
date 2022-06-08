@@ -23,7 +23,7 @@ function CheckEmailPopup(props) {
         isCheckEmailStore.dispatch({type: 'DISPLAY_NO'});
     }
     function checkCode (){
-        if(document.querySelector('.checkemail #codeConfirm').value == codeConfirm){
+        if(document.querySelector('.checkemail #codeConfirm').value === codeConfirm){
             createAccount(obj);
         }else{
             console.log(false)
