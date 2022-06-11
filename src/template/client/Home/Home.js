@@ -5,6 +5,7 @@ import Main from './components/Main'
 import BookPopup from './components/BookPopup'
 import { isBookPopupStore } from '../../../redux/display';
 import { listItemStore } from '../../../redux/listItem';
+import {isWarningSigninStore, contentWarningStore} from '../../../redux/display';
 import '../../../css/home.scss';
 import Header from '../../common/Header/Header'
 
@@ -111,7 +112,8 @@ function Home() {
             isBookPopupStore.dispatch({type: 'DISPLAY_YES'});
             document.getElementById('priceInput').value = '';
         }else{
-            alert('Bạn phải đăng nhập để sử dụng chức năng này');
+            isWarningSigninStore.dispatch({type: 'DISPLAY_YES'});
+            contentWarningStore.dispatch({type: 'SET', data: 'Đăng nhập để sử dụng dịch vụ này'});
         }
     }
 

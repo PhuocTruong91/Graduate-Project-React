@@ -6,6 +6,7 @@ import Login from './components/Login';
 import FavouriteList from './components/FavouriteList';
 import {listItemStore, actionType} from '../../../redux/listItem';
 import {userStore, expectedItemStore} from '../../../redux/user';
+import {contentWarningStore, isWarningSigninStore} from '../../../redux/display';
 
 function Header() {
     const [isLogin, setIslogin] = React.useState(false);
@@ -28,7 +29,9 @@ function Header() {
             setDisplay(!display);
             document.getElementById("header").classList.add("on-top");
         }
+   
     })
+
 
     document.addEventListener('scroll', function (){
         if(window.scrollY > 120){
@@ -40,7 +43,12 @@ function Header() {
 
     function handleSearchBanner(){
         var value = document.getElementById('searchBanner').value;
-        listItemStore.dispatch({type: actionType.getbyname, name: value})
+        if(value.length === 0 ){
+            isWarningSigninStore.dispatch({type: 'DISPLAY_YES'});
+            contentWarningStore.dispatch({type: 'SET', data: 'Nhập giá trị trước khi tìm kiếm'})
+        }else{
+            listItemStore.dispatch({type: actionType.getbyname, name: value})
+        }
     }
     
     function toggleLogin(){

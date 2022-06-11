@@ -15,6 +15,30 @@ var isSignInSuccess = (state = false, action) =>{
     return state;
 }
 
+var isWarningSignin = (state = false, action) =>{
+    switch (action.type) {
+        case 'TOGGLE':
+            return !state;
+        case 'DISPLAY_YES':
+            return true;
+        case 'DISPLAY_NO':
+            return false;
+        default:
+            break;
+    }
+    return state;
+}
+
+var contentWarning = (state = '', action) =>{
+    switch (action.type) {
+        case 'SET':
+            return action.data;
+        default:
+            break;
+    }
+    return state;
+}
+
 var isLoadReducer = (state = false, action) =>{
     switch (action.type) {
         case 'TOGGLE':
@@ -60,4 +84,6 @@ export var isSignInSuccessStore = createStore(isSignInSuccess);
 export var isLoadStore = createStore(isLoadReducer);
 export var isBookPopupStore = createStore(isBookPopup);
 export var isCheckEmailStore = createStore(isCheckEmail);
+export var isWarningSigninStore = createStore(isWarningSignin);
+export var contentWarningStore = createStore(contentWarning);
 

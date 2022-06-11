@@ -1,6 +1,7 @@
 import React from 'react';
 import {listTrackingStore} from '../../redux/listTracking'
 import {listAccountStore} from '../../redux/user'
+import {listAllItemStore} from '../../redux/listItem'
 import {isLoadStore} from '../../redux/display'
 import Side from './component/Side'
 import Main from './component/Main'
@@ -8,10 +9,12 @@ import LoginAdmin from './LoginAdmin'
 import '../../css/admin.scss';
 import {getListTracking} from '../../controller/ListTracking'
 import {getListAccount} from '../../controller/Account'
+import {getAllItem} from '../../controller/ListItem'
 
 function Admin() {
     const [listTracking, setListTracking] = React.useState(listTrackingStore.getState());
     const [listAccount, setListAccount] = React.useState(listAccountStore.getState());
+    const [listProduct, setListProduct] = React.useState(listAllItemStore.getState());
     const [isLogin, setIslogin] = React.useState(false);
     const [err, setErr] = React.useState(false);
 
@@ -23,9 +26,14 @@ function Admin() {
         setListTracking(listTrackingStore.getState())
     });
     
+    listAllItemStore.subscribe(() =>{
+        setListProduct(listAllItemStore.getState())
+    });
+    
     function getListData (){
         getListTracking();
         getListAccount();
+        getAllItem();
     };
 
     function handleSignIn () {
@@ -35,6 +43,7 @@ function Admin() {
         listAccount.map((item) => {
             if(item.type === 'admin'){
                 if (item.username === user && item.password === pass){
+                    window.admin = item;
                     setTimeout(() => {
                         isLoadStore.dispatch({type: 'DISPLAY_NO'});
                         setIslogin(true);
@@ -61,7 +70,7 @@ function Admin() {
             { isLogin ? 
                 <div className="admin">
                     <Side></Side>
-                    <Main listAccount={listAccount} listTracking={listTracking}></Main>
+                    <Main listAccount={listAccount} listTracking={listTracking} listProduct={listProduct}></Main>
                 </div>
                 :
                 <LoginAdmin err={err} handleSignIn={handleSignIn} getListData={getListData} listAccount={listAccount}></LoginAdmin>

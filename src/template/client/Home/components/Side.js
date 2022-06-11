@@ -1,5 +1,6 @@
 import SideItem from './SideItem';
 import {listItemStore, actionType} from '../../../../redux/listItem';
+import {isWarningSigninStore, contentWarningStore} from '../../../../redux/display';
 
 function Side(props) {
     var list = [
@@ -74,7 +75,12 @@ function Side(props) {
     ];
     function handleSearch(){
         var value = document.getElementById('searchInput').value;
-        listItemStore.dispatch({type: actionType.getbyname, name: value, isMain: true})
+        if(value.length === 0 ){
+            isWarningSigninStore.dispatch({type: 'DISPLAY_YES'});
+            contentWarningStore.dispatch({type: 'SET', data: 'Nhập giá trị trước khi tìm kiếm'})
+        }else{
+            listItemStore.dispatch({type: actionType.getbyname, name: value, isMain: true})
+        }
     }
     return ( 
         <div class="side-option">

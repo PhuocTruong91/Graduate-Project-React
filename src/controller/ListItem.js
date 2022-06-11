@@ -1,5 +1,6 @@
 import {mainDomain} from './config';
 import axios from 'axios';
+import {listAllItemStore} from './../redux/listItem'
 
 export function  getItem(data = {}){
     var result ={}
@@ -27,6 +28,19 @@ export async function getItemByName(data = ''){
     result = await axios.get(baseUrl)
     .then(res => {
         return res.data.result;
+    })
+    .catch(err => {
+        console.log(err);
+    })
+    return result;
+}
+
+export function  getAllItem(data = {}){
+    var baseUrl = mainDomain + 'products';
+
+    var result = axios.get(baseUrl)
+    .then(res => {
+        listAllItemStore.dispatch({type: 'GET_ALL', data: res.data.result});
     })
     .catch(err => {
         console.log(err);

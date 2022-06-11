@@ -38,7 +38,7 @@
         .product-manager{
             &_container{
                 .latest-info-data{
-                    margin-bottom: 50px;
+                    margin-bottom: 100px;
                     > div{
                         display: flex;
                         justify-content: space-between;
@@ -81,6 +81,22 @@
                             font-weight: bold;
                             padding: 20px;
                         }
+                    }
+                }
+                .daily-data{
+                    margin-bottom: 100px;
+                    canvas{
+                        max-width: 100%;
+                    }
+                   
+                }
+                .total-data{
+                    .gelpCx{
+                        border-radius: 6px;
+                    }
+                    > div > div > div > div{ 
+                        font-size: 14px;
+                        font-weight: bold;
                     }
                 }
             }

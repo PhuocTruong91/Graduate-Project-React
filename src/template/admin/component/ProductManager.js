@@ -8,9 +8,9 @@ function ProductManager(props) {
 
     var lastItem = listTracking ? listTracking[listTracking.length - 1] : {};
     var penultimateItem = listTracking ? listTracking[listTracking.length - 2] : {};
-    var compareTotal = lastItem.data_total ? (lastItem.data_total / penultimateItem.data_total > 1 ? true : false) : '';
-    var compareInsert = lastItem.data_total ? (lastItem.data_total / penultimateItem.data_total > 1 ? true : false) : '';
-    var compareUpdate = lastItem.data_total ? (lastItem.data_total / penultimateItem.data_total > 1 ? true : false) : '';
+    var compareTotal = lastItem && penultimateItem ? (lastItem.data_total / penultimateItem.data_total > 1 ? true : false) : '';
+    var compareInsert = lastItem.insert_total && penultimateItem.insert_total ? (lastItem.insert_total / penultimateItem.insert_total > 1 ? true : false) : '';
+    var compareUpdate = lastItem.update_total && penultimateItem.update_total ? (lastItem.update_total / penultimateItem.update_total > 1 ? true : false) : '';
 
     return ( 
         <div className="product-manager">
@@ -42,7 +42,7 @@ function ProductManager(props) {
                     </div>
                 </section>
                 <Section2 listTracking={listTracking}></Section2>
-                <Section3 listTracking={listTracking}></Section3>
+                <Section3 listTracking={listTracking} listProduct={props.listProduct}></Section3>
             </div>
         </div>
      );

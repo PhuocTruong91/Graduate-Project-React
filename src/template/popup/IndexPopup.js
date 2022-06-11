@@ -1,5 +1,6 @@
 import PopupSuccess from './PopupSuccess'
 import CheckEmail from './CheckEmail'
+import PopupWarning from './PopupWarning'
 import '../../css/popup.scss'
 import BeatLoader from "react-spinners/BeatLoader";
 import React from 'react';
@@ -12,6 +13,7 @@ function Index() {
     return (  
         <div>
             <PopupSuccess></PopupSuccess>
+            <PopupWarning></PopupWarning>
             <CheckEmail></CheckEmail>
             { isLoad ? 
 				<div class="loader">
