@@ -13,7 +13,6 @@ function UserManager(props) {
         removeActive();
         event.target.closest('tr').classList.add('active');
         setData(data);
-        getListAccount();
     }
     
     function sortType (a,b){

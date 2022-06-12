@@ -9,8 +9,8 @@ function ProductManager(props) {
     var lastItem = listTracking ? listTracking[listTracking.length - 1] : {};
     var penultimateItem = listTracking ? listTracking[listTracking.length - 2] : {};
     var compareTotal = lastItem && penultimateItem ? (lastItem.data_total / penultimateItem.data_total > 1 ? true : false) : '';
-    var compareInsert = lastItem.insert_total && penultimateItem.insert_total ? (lastItem.insert_total / penultimateItem.insert_total > 1 ? true : false) : '';
-    var compareUpdate = lastItem.update_total && penultimateItem.update_total ? (lastItem.update_total / penultimateItem.update_total > 1 ? true : false) : '';
+    var compareInsert = lastItem && penultimateItem ? (lastItem.insert_total / penultimateItem.insert_total > 1 ? true : false) : '';
+    var compareUpdate = lastItem && penultimateItem ? (lastItem.update_total / penultimateItem.update_total > 1 ? true : false) : '';
 
     return ( 
         <div className="product-manager">
@@ -30,14 +30,14 @@ function ProductManager(props) {
                                 <p className='title'>Dữ liệu được thêm</p>
                                 <p className={"percent " + (compareInsert > 0 ? 'increase' : 'decrease')}> {compareInsert > 0 ? <CaretUpOutlined /> : <CaretDownOutlined/>} {lastItem && penultimateItem? (lastItem.insert_total / penultimateItem.insert_total).toFixed(1): ''} %</p>
                             </div>
-                            <p className="amount">{lastItem.insert_total}</p>
+                            <p className="amount">{lastItem ? lastItem.insert_total : ''}</p>
                         </div>
                         <div className="latest-info-data_item">
                             <div>
                                 <p className='title'>Dữ liệu được cập nhật</p>
                                 <p className={"percent " + (compareUpdate > 0 ? 'increase' : 'decrease')}> {compareUpdate > 0 ? <CaretUpOutlined /> : <CaretDownOutlined/>} {lastItem && penultimateItem? (lastItem.update_total / penultimateItem.update_total).toFixed(1): ''} %</p>
                             </div>
-                            <p className="amount">{lastItem.update_total}</p>
+                            <p className="amount">{lastItem ? lastItem.update_total : ''}</p>
                         </div>
                     </div>
                 </section>

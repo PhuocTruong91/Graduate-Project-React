@@ -7,6 +7,7 @@ import FavouriteList from './components/FavouriteList';
 import {listItemStore, actionType} from '../../../redux/listItem';
 import {userStore, expectedItemStore} from '../../../redux/user';
 import {contentWarningStore, isWarningSigninStore} from '../../../redux/display';
+import {Link} from 'react-router-dom';
 
 function Header() {
     const [isLogin, setIslogin] = React.useState(false);
@@ -69,6 +70,7 @@ function Header() {
                 <div className="left">
                     <img src={logo}/>
                     <div className="nav-link">
+                        <Link to="/Graduate-Project-React/admin">12312312</Link>
                         <p>Trang chủ</p>
                         <p>Dịch vụ</p>
                         <p>Ưu đãi</p>
