@@ -63,12 +63,11 @@ function Section3(props) {
 
     return (
         <section className="total-data">
-            <p className='section-title'>Dữ liệu</p>
+            <p className='section-title'>Thông tin sản phẩm</p>
             <DataTable
                 columns={columns}
                 data={data}
                 pagination
-                
             />
         </section>
     );

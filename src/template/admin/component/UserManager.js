@@ -8,12 +8,9 @@ function UserManager(props) {
     var [data, setData] = React.useState({});
 
     function selectItem(event){
-        var list = document.querySelectorAll('tr');
         var data = JSON.parse(event.target.attributes.value.value);
 
-        list.forEach(item => {
-            item.classList.remove('active');
-        })
+        removeActive();
         event.target.closest('tr').classList.add('active');
         setData(data);
         getListAccount();
@@ -59,11 +56,18 @@ function UserManager(props) {
         if(data._id !== undefined){
             document.querySelector('.popup-delete #id').value = data._id;
             isDeleteAccountStore.dispatch({type: 'DISPLAY_YES'});
-            setData({})
+            setData({});
         }else{
             isWarningSigninStore.dispatch({type: 'DISPLAY_YES'});
             contentWarningStore.dispatch({type: 'SET', data: 'Chọn trường dữ liệu cần xoá'});
         }
+    }
+
+    function removeActive (){
+        var list = document.querySelectorAll('tr');
+        list.forEach(item => {
+            item.classList.remove('active');
+        })
     }
     return ( 
         <div className="user-manager">
@@ -95,9 +99,9 @@ function UserManager(props) {
                     }
                 </table>
                 <div className="group-button">
-                    <p className="btn-basic add" onClick={addAccount}>Thêm</p>
-                    <p className="btn-basic update" onClick={updateAccount}>Cập nhật</p>
-                    <p className="btn-basic delete" onClick={deleteAccount}>Xoá</p>
+                    <p className="btn-basic blue add" onClick={addAccount}>Thêm</p>
+                    <p className="btn-basic blue update" onClick={updateAccount}>Cập nhật</p>
+                    <p className="btn-basic blue delete" onClick={deleteAccount}>Xoá</p>
                 </div>
             </section>
         </div>

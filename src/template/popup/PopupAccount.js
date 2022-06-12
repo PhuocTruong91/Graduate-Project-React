@@ -8,8 +8,6 @@ function PopupAccount (props) {
     const [checkInput, setCheckInput] = React.useState(false);
     const [typePopup, setTypePopup] = React.useState(typePopupAccountStore.getState());
     const [listAccount, setListAccount] = React.useState(listAccountStore.getState());
-    const [listEmail, setListEmail] = React.useState(listAccountStore.getState());
-    const [listUser, setListUser] = React.useState(listAccountStore.getState());
     const [errEmail, setErrEmail] = React.useState(false);
     const [errUser, setErrUser] = React.useState(false);
 
@@ -21,14 +19,6 @@ function PopupAccount (props) {
     });
     listAccountStore.subscribe(() => {
         setListAccount(listAccountStore.getState());
-        var listEmail = [];
-        var listUser = [];
-        listAccount.map((item) => {
-            listEmail.push(item.email);
-            listUser.push(item.username);
-        })
-        setListEmail(listEmail);
-        setListUser(listUser);
     });
 
     function closePopup (){
@@ -44,6 +34,14 @@ function PopupAccount (props) {
             phone: document.querySelector('.popup-account #phone').value,
             password: document.querySelector('.popup-account #password').value,
         }
+
+        var listEmail = [];
+        var listUser = [];
+        listAccount.map((item) => {
+            listEmail.push(item.email);
+            listUser.push(item.username);
+        })
+
         if(typePopup === 'ADD'){
             delete obj._id;
             obj.type = document.getElementById("typeUser").value;
@@ -113,8 +111,8 @@ function PopupAccount (props) {
                 { 
                    typePopup === 'ADD' ? 
                    <select id="typeUser">
-                        <option value='USER'>USER</option>
-                        <option value='ADMIN'>ADMIN</option>
+                        <option value='user'>USER</option>
+                        <option value='admin'>ADMIN</option>
                    </select> :
                    ''
                 }

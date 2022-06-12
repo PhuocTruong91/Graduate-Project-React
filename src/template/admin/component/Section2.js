@@ -37,30 +37,6 @@ function Section2(props) {
         ],
     };
 
-    const data2 = {
-        labels,
-        datasets: [
-          {
-            label: '',
-            data: labels.map((item,index) => listTracking[index].insert_total),
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-          },
-        ],
-    };
-
-    const data3 = {
-        labels,
-        datasets: [
-          {
-            label: '',
-            data: labels.map((item,index) => listTracking[index].update_total),
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-          },
-        ],
-    };
-
     return ( 
         <section className="daily-data">
             <p className='section-title'>Biểu đồ dữ liệu theo ngày</p>
