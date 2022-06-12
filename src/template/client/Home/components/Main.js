@@ -35,8 +35,8 @@ function Main(props) {
     });
 
     return (
-        <div class="main">
-            <div class="content">
+        <div className="main">
+            <div className="content">
                 {
                     listShop ? listShop.map(item => {
                         return <MainItem handleDisplayPopup={props.handleDisplayPopup} store= {item.name} img={item.img} listItem={item.listItem} mainList={props.listItem}></MainItem>

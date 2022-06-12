@@ -47,29 +47,29 @@ function BookPopup(props) {
         if(isBookPopupStore.getState() === false) setInputValue('');
     })
     return ( 
-        <div class={"book-popup fade " + (displayPopup ?  '' : 'un-fade')} data-id={props.id}>
-            <div class="book-popup_container">
-                <p class="title">Đặt lời nhắc</p>
-                <div class="present-product">
+        <div className={"book-popup fade " + (displayPopup ?  '' : 'un-fade')} data-id={props.id}>
+            <div className="book-popup_container">
+                <p className="title">Đặt lời nhắc</p>
+                <div className="present-product">
                     <p>Tên sản phẩm</p>
                     <p>{props.name}</p>
                 </div>
-                <div class="present-price">
-                    <p class="present-price_title">Giá hiện tại</p>
+                <div className="present-price">
+                    <p className="present-price_title">Giá hiện tại</p>
                     <p>{(props.price ? props.price
                         .toString()
                         .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") : '') + ' '}
                        VNĐ</p>
                 </div>
-                <div class="expected-price">
-                    <p class="expected-price_title">Giá mong muốn</p>
+                <div className="expected-price">
+                    <p className="expected-price_title">Giá mong muốn</p>
                     <input onChange={handleOnchange} id="priceInput" value={inputValue} />
                     <span>VNĐ</span>
-                    {!isvalid ? <p class="error-text">Giá trị không phù hợp</p> : ''}
+                    {!isvalid ? <p className="error-text">Giá trị không phù hợp</p> : ''}
                 </div>
-                <div class="group-button">
-                    <p class="cancel" onClick={handleClosePopup}>Hủy</p>
-                    <p class={"accept " + (!isvalid || !isHaveData? 'invalid' : '')} onClick={handleBookItem}>Đồng ý</p>
+                <div className="group-button">
+                    <p className="cancel" onClick={handleClosePopup}>Hủy</p>
+                    <p className={"accept " + (!isvalid || !isHaveData? 'invalid' : '')} onClick={handleBookItem}>Đồng ý</p>
                 </div>
             </div>
         </div>

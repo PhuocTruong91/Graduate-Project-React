@@ -1,18 +1,52 @@
 import {mainDomain} from './config';
 import {isLoadStore} from '../redux/display'
-import {isSignInSuccessStore, isBookPopupStore, isCheckEmailStore} from '../redux/display'
+import {isSignInSuccessStore, isBookPopupStore, isDeleteAccountStore, isPopupAccountStore} from '../redux/display'
 import {userStore, resStore, expectedItemStore, listAccountStore} from '../redux/user'
 import axios from 'axios';
 
 export function createAccount(data) {
-    var baseUrl = mainDomain + 'create';
+    var baseUrl = mainDomain + 'account/create';
     isLoadStore.dispatch({type: 'DISPLAY_YES'});
     axios.post(baseUrl, data)
         .then(function (res) {
             isLoadStore.dispatch({type: 'DISPLAY_NO'});
             if(res.data.success){
                 isSignInSuccessStore.dispatch({type: 'DISPLAY_YES'})
-                isCheckEmailStore.dispatch({type: 'DISPLAY_NO'});
+                isPopupAccountStore.dispatch({type: 'DISPLAY_NO'});
+                getListAccount();
+            }
+        })
+        .catch(function (error) {
+            console.log(error)
+            isLoadStore.dispatch({type: 'DISPLAY_NO'});
+        });
+}
+
+export function updateAccount(data) {
+    var baseUrl = mainDomain + 'account/update';
+    isLoadStore.dispatch({type: 'DISPLAY_YES'});
+    axios.post(baseUrl, data)
+        .then(function (res) {
+            if(res.data.success){
+                console.log('Success');
+                getListAccount();
+            }
+        })
+        .catch(function (error) {
+            console.log(error)
+            isLoadStore.dispatch({type: 'DISPLAY_NO'});
+        });
+}
+
+export function deleteAccount(id) {
+    var baseUrl = mainDomain + 'account/delete?id=' + id;
+    isLoadStore.dispatch({type: 'DISPLAY_YES'});
+    axios.post(baseUrl)
+        .then(function (res) {
+            if(res.data.success){
+                console.log('Success');
+                isDeleteAccountStore.dispatch({type: 'DISPLAY_NO'});
+                getListAccount();
             }
         })
         .catch(function (error) {
@@ -74,8 +108,11 @@ export function getListAccount(){
     axios.get(baseUrl)
         .then(function (res){
             listAccountStore.dispatch({type: 'SET', data: res.data});
+            isLoadStore.dispatch({type: 'DISPLAY_NO'});
+            isPopupAccountStore.dispatch({type: 'DISPLAY_NO'});
         })
         .catch( function(err){
+            isLoadStore.dispatch({type: 'DISPLAY_NO'});
             console.log(err)
         }
     )

@@ -15,8 +15,14 @@ function Admin() {
     const [listTracking, setListTracking] = React.useState(listTrackingStore.getState());
     const [listAccount, setListAccount] = React.useState(listAccountStore.getState());
     const [listProduct, setListProduct] = React.useState(listAllItemStore.getState());
+    const [showValue, setShowValue] = React.useState('data');
     const [isLogin, setIslogin] = React.useState(false);
     const [err, setErr] = React.useState(false);
+
+    function handleSelectShow(event) {
+        var data = event.target.attributes.value.value;
+        setShowValue(data);
+    }
 
     listAccountStore.subscribe(() =>{
         setListAccount(listAccountStore.getState())
@@ -40,6 +46,7 @@ function Admin() {
         var user = document.querySelector('#userAdmin').value;
         var pass = document.querySelector('#passAdmin').value;
         isLoadStore.dispatch({type: 'DISPLAY_YES'});
+        console.log(listAccount)
         listAccount.map((item) => {
             if(item.type === 'admin'){
                 if (item.username === user && item.password === pass){
@@ -69,8 +76,8 @@ function Admin() {
         <div>
             { isLogin ? 
                 <div className="admin">
-                    <Side></Side>
-                    <Main listAccount={listAccount} listTracking={listTracking} listProduct={listProduct}></Main>
+                    <Side handleSelectShow={handleSelectShow}></Side>
+                    <Main showValue={showValue} listAccount={listAccount} listTracking={listTracking} listProduct={listProduct}></Main>
                 </div>
                 :
                 <LoginAdmin err={err} handleSignIn={handleSignIn} getListData={getListData} listAccount={listAccount}></LoginAdmin>

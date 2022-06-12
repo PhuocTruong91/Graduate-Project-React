@@ -44,7 +44,6 @@ function Login(props) {
             if(listUser.includes(obj.username)){
                 setErrUser(true);
             } 
-            
         }else{
             setErrEmail(false);
             setErrUser(false);
@@ -60,7 +59,7 @@ function Login(props) {
             username : document.querySelector('.sign-in #username').value,
             pass: document.querySelector('.sign-in #password').value,
         }
-        logIn(obj)
+        logIn(obj);
     }
 
     function checkSignup(){
@@ -104,33 +103,33 @@ function Login(props) {
     })
 
     return (  
-        <div id="loginContainer"  class={(props.display === true ? '' : 'un-fade') + " fade"}>
-            <div class="content">
-                <div class={"sign-in fade " + (signin === true ? '' : 'un-fade d-none')}>
-                    <p class="title">Đăng nhập</p>
-                    {err === true ? <p class="error">{res.errcontent}</p> : ''}
+        <div id="loginContainer"  className={(props.display === true ? '' : 'un-fade') + " fade"}>
+            <div className="content">
+                <div className={"sign-in fade " + (signin === true ? '' : 'un-fade d-none')}>
+                    <p className="title">Đăng nhập</p>
+                    {err === true ? <p className="error">{res.errcontent}</p> : ''}
                     <input id="username" onChange={checkSignin} placeholder="Tên đăng nhập"/>
                     <input type="password" onChange={checkSignin} placeholder="Mật khẩu" id="password"/>
-                    <p id="btnLogin" onClick={handleSignIn} class={"btn-first " + (disableSignin ? 'invalid' : '')}>Đăng nhập</p>
-                    <div class="line">Chưa có tài khoản?</div>
-                    <p class="btn-second" onClick={handleClick}>Đăng ký</p>
+                    <p id="btnLogin" onClick={handleSignIn} className={"btn-first " + (disableSignin ? 'invalid' : '')}>Đăng nhập</p>
+                    <div className="line">Chưa có tài khoản?</div>
+                    <p className="btn-second" onClick={handleClick}>Đăng ký</p>
                 </div>
-                <div class={"sign-up fade " + (signin === true ? 'un-fade d-none' : '')}>
-                    <p class="title">Đăng ký</p>
+                <div className={"sign-up fade " + (signin === true ? 'un-fade d-none' : '')}>
+                    <p className="title">Đăng ký</p>
                     <input id="name" onChange={checkSignup} placeholder="Họ và tên"/>
-                    <div class="group-error">
+                    <div className="group-error">
                         <input id="email" onChange={checkSignup} placeholder="Email"/>
-                        {errEmail === true ? <p class="error-text email">Email đã tồn tại</p> : ''}
+                        {errEmail === true ? <p className="error-text email">Email đã tồn tại</p> : ''}
                     </div>
                     <input id="phone" onChange={checkSignup} placeholder="Số điện thoại"/>
-                    <div class="group-error">
+                    <div className="group-error">
                         <input id="username" onChange={checkSignup} placeholder="Tên đăng nhập"/>
-                        {errUser === true ? <p class="error-text user">Tên đăng nhập đã tồn tại</p> : ''}
+                        {errUser === true ? <p className="error-text user">Tên đăng nhập đã tồn tại</p> : ''}
                     </div>
                     <input type="password" onChange={checkSignup} placeholder="Mật khẩu" id="password"/>
-                    <p id="btnSignUp"  class={"btn-first " + (disableSignup ? 'invalid' : '')} onClick={handleSignUp}>Đăng ký</p>
-                    <div class="line">Đã có tài khoản?</div>
-                    <p class="btn-second" onClick={handleClick}>Đăng nhập</p>
+                    <p id="btnSignUp"  className={"btn-first " + (disableSignup ? 'invalid' : '')} onClick={handleSignUp}>Đăng ký</p>
+                    <div className="line">Đã có tài khoản?</div>
+                    <p className="btn-second" onClick={handleClick}>Đăng nhập</p>
                 </div>
             </div>
         </div>

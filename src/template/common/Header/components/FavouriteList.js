@@ -3,13 +3,13 @@ import noimg from '../../../../images/noimg.png'
 function FavouriteList(props) {
     return ( 
         <div className={"favourite-list fade " + (props.displayFavouriteList ? '' : 'in-active')}>
-            <div class="favourite-list_container">
+            <div className="favourite-list_container">
                 {
                     props.listFavourite ? 
                     props.listFavourite.map ( (item) => {
                         return(
-                            <a href={item.link} target="_blank" rel="noreferrer" id={item.idProduct}>
-                                <div class="favourite-item">
+                            <a key={item.idProduct} href={item.link} target="_blank" rel="noreferrer" id={item.idProduct}>
+                                <div className="favourite-item">
                                     <img src={item.img ? item.img : noimg}></img>
                                     <div className="group-info">
                                         <p className="title">{item.name}</p>

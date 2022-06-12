@@ -1,10 +1,21 @@
+.group-btn{
+    display: flex;
+    margin-top: 20px;
+    .btn-basic{
+        flex:  1;
+        &.white{
+            margin-bottom: 0;
+            margin-left: 10px;
+        }
+    }
+}
 .btn-basic{
     border-radius: 3px;
     font-weight: 600;
     font-size: 15px;
     line-height: 13px;
     text-align: center;
-    padding: 13px 25px;
+    padding: 13px 20px;
     cursor: pointer;
     &:hover{
         opacity: .8;
@@ -20,6 +31,7 @@
         border: 1px solid #0066FF;
     }
 }
+
 
 .input-basic{
     display: block;

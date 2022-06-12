@@ -36,4 +36,28 @@
         cursor: pointer;
     }
 }
+.popup-account{
+    .container{
+        .title{
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+        input{
+            display: block;
+            margin-bottom: 18px;
+        }
+        .error-text{
+            position: absolute;
+            color: red;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+        }
+        .group-error{
+            position: relative;
+        }
+    }
+}
 

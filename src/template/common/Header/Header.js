@@ -64,11 +64,11 @@ function Header() {
         setDisplayFavouriteList(!displayFavouriteList);
     }
     return (
-        <div class="container">
-            <div id="header" class="header on-top">
-                <div class="left">
+        <div className="container">
+            <div id="header" className="header on-top">
+                <div className="left">
                     <img src={logo}/>
-                    <div class="nav-link">
+                    <div className="nav-link">
                         <p>Trang chủ</p>
                         <p>Dịch vụ</p>
                         <p>Ưu đãi</p>
@@ -83,11 +83,11 @@ function Header() {
                         </svg>
                         <div onClick={toggleFavouriteList} className="remind">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11.6666 1.66663H4.99992C4.55789 1.66663 4.13397 1.84222 3.82141 2.15478C3.50885 2.46734 3.33325 2.89127 3.33325 3.33329V16.6666C3.33325 17.1087 3.50885 17.5326 3.82141 17.8451C4.13397 18.1577 4.55789 18.3333 4.99992 18.3333H14.9999C15.4419 18.3333 15.8659 18.1577 16.1784 17.8451C16.491 17.5326 16.6666 17.1087 16.6666 16.6666V6.66663L11.6666 1.66663Z" stroke="#1F2125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M11.6667 1.66663V6.66663H16.6667" stroke="#1F2125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M13.3334 10.8334H6.66675" stroke="#1F2125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M13.3334 14.1666H6.66675" stroke="#1F2125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M8.33341 7.5H7.50008H6.66675" stroke="#1F2125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M11.6666 1.66663H4.99992C4.55789 1.66663 4.13397 1.84222 3.82141 2.15478C3.50885 2.46734 3.33325 2.89127 3.33325 3.33329V16.6666C3.33325 17.1087 3.50885 17.5326 3.82141 17.8451C4.13397 18.1577 4.55789 18.3333 4.99992 18.3333H14.9999C15.4419 18.3333 15.8659 18.1577 16.1784 17.8451C16.491 17.5326 16.6666 17.1087 16.6666 16.6666V6.66663L11.6666 1.66663Z" stroke="#1F2125" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M11.6667 1.66663V6.66663H16.6667" stroke="#1F2125" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M13.3334 10.8334H6.66675" stroke="#1F2125" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M13.3334 14.1666H6.66675" stroke="#1F2125" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M8.33341 7.5H7.50008H6.66675" stroke="#1F2125" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                             {listFavourite &&  listFavourite.length > 0? <p>{listFavourite.length}</p> : ''}
                         </div>

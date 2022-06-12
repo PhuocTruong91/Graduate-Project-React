@@ -3,7 +3,6 @@ import DataTable from 'react-data-table-component';
 function Section3(props) {
     const listProduct = props.listProduct;
     const newList = [];
-    console.log(listProduct)
     listProduct.forEach(item =>{
         delete item.img;
         delete item.info;

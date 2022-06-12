@@ -4,12 +4,12 @@ function SideItem(prop) {
     }
 
     return (  
-        <div class="item">
-            <p class="title">{prop.title}</p>
-            <div class="group-item">
+        <div className="item">
+            <p className="title">{prop.title}</p>
+            <div className="group-item">
                 {prop.listItem.map((item, index) => {
                     return (
-                        <div class="item-checkbox">
+                        <div key={index} className="item-checkbox">
                             <input onChange={handleOnchange} type='checkbox' value={item.value} name={prop.cate}/>
                             <p>{item.name}</p>
                         </div>

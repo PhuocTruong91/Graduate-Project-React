@@ -160,6 +160,8 @@
                 background-color: #0066FF;
                 color: white;
                 cursor: pointer;
+                min-width: 100px;
+                justify-content: center;
                 &:hover{
                     opacity: .8;
                 }
