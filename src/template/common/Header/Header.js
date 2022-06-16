@@ -1,4 +1,5 @@
 import * as React from "react";
+import {Link} from 'react-router-dom';
 
 import logo from '../../../images/logo.png';
 import '../../../css/header.scss';
@@ -7,10 +8,8 @@ import FavouriteList from './components/FavouriteList';
 import {listItemStore, actionType} from '../../../redux/listItem';
 import {userStore, expectedItemStore} from '../../../redux/user';
 import {contentWarningStore, isWarningSigninStore} from '../../../redux/display';
-import {Link} from 'react-router-dom';
 
-function Header() {
-    const [isLogin, setIslogin] = React.useState(false);
+function Header(props) {
     const [display, setDisplay] = React.useState(false);
     const [displayFavouriteList, setDisplayFavouriteList] = React.useState(false);
     const [user, setUser] = React.useState(userStore.getState());
@@ -26,7 +25,6 @@ function Header() {
         if(userStore.getState()){
             setUser(userStore.getState());
             window.user = userStore.getState();
-            setIslogin(true);
             setDisplay(!display);
             document.getElementById("header").classList.add("on-top");
         }
@@ -66,18 +64,17 @@ function Header() {
     }
     return (
         <div className="container">
-            <div id="header" className="header on-top">
+            <div id="header" className={"header " + (props.type === 'home' ? 'on-top' : '')}>
                 <div className="left">
                     <img src={logo}/>
                     <div className="nav-link">
-                        <Link to="/Graduate-Project-React/admin">12312312</Link>
-                        <p>Trang chủ</p>
+                        <Link to='/Graduate-Project-React'><p>Trang chủ</p></Link>
                         <p>Dịch vụ</p>
                         <p>Ưu đãi</p>
                         <p>Hỗ trợ</p>
                     </div>
                 </div>
-                { isLogin ?  
+                { window.user ?  
                     <div className="user-info">
                         <p>{window.user ? user.name : ''}</p>
                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,19 +90,32 @@ function Header() {
                             </svg>
                             {listFavourite &&  listFavourite.length > 0? <p>{listFavourite.length}</p> : ''}
                         </div>
+                        <Link to='/Graduate-Project-React/account'>
+                            <svg class="list" width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.1455 5.64417H1.14551" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M19.1455 1.64417H1.14551" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M19.1455 9.64417H1.14551" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M19.1455 13.6442H1.14551" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </Link>
                     </div> : 
                     <p id="login-header" className="login" onClick={toggleLogin}>Đăng nhập</p>
                 }
             </div> 
-            <div id="background" className="background">
-                    <div className="group-search">
-                        <p className="title">Find your product ...</p>
-                        <input id="searchBanner"/>
-                        <div onClick={handleSearchBanner} id="label" className="label">
-                            <p  className="search-label">tìm kiếm</p>
+            {
+                props.type === 'home' ? (
+                    <div id="background" className="background">
+                        <div className="group-search">
+                            <p className="title">Find your product ...</p>
+                            <input id="searchBanner"/>
+                            <div onClick={handleSearchBanner} id="label" className="label">
+                                <p  className="search-label">tìm kiếm</p>
+                            </div>
                         </div>
                     </div>
-            </div>
+                ) : ''
+            }
+            
             <Login display={display}/>
             <FavouriteList displayFavouriteList={displayFavouriteList} listFavourite={listFavourite}></FavouriteList>
         </div>

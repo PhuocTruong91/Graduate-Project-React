@@ -14,7 +14,7 @@
         z-index: 100;
         &.on-top{
             background: transparent;
-            color: white;
+            color: white !important;
             .user-info{
                 .remind{
                     svg{
@@ -27,6 +27,7 @@
                 svg{
                     path{
                         fill: white !important;
+                        stroke: white !important;
                     }
                 }
                 p{
@@ -35,6 +36,11 @@
             }
             .login{
                 background: transparent;
+            }
+            .nav-link{
+                p{
+                    color: white !important;
+                }
             }
         }
         .left{
@@ -48,6 +54,10 @@
                     font-weight: 700;
                     font-size: 13px;
                     line-height: 16px;
+                    color: black;
+                }
+                a{
+                    text-decoration: none;
                 }
             }
         }
@@ -73,7 +83,7 @@
             margin-right: 50px;
             .remind{
                 height: 20px;
-                margin-left: 10px;
+                margin: 0 10px;
                 position: relative;
                 cursor: pointer;
                 p{
@@ -93,6 +103,9 @@
                 svg{
                     margin: 0;
                 }
+            }
+            .list{
+                cursor: pointer;
             }
             svg{
                 margin-left: 7px;

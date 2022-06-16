@@ -119,7 +119,7 @@ function Home() {
 
     return ( 
         <div>
-            <Header></Header>
+            <Header type="home"></Header>
             <div className="content-body">
                 <div id="homepage" className="homepage">
                     <Side getListCate={getListCate}></Side>
