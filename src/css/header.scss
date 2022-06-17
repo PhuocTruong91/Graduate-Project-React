@@ -43,6 +43,35 @@
                 }
             }
         }
+        &.account{
+            background: white;
+            color: black !important;
+            .user-info{
+                .remind{
+                    svg{
+                        path{
+                            stroke: black;
+                        }
+                    }
+                }
+                svg{
+                    path{
+                        stroke: black !important;
+                    }
+                }
+                p{
+                    color: black;
+                }
+            }
+            .login{
+                background: white;
+            }
+            .nav-link{
+                p{
+                    color: black !important;
+                }
+            }
+        }
         .left{
             margin-left: 60px;
             display: flex;
@@ -312,6 +341,10 @@
                         font-weight: 600;
                         font-size: 14px;
                         margin-bottom: 6px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        width: 280px;
                     }
                     .group-price{
                         display: flex;

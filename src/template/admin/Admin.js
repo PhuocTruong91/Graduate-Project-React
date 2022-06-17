@@ -50,7 +50,7 @@ function Admin() {
         listAccount.map((item) => {
             if(item.type === 'admin'){
                 if (item.username === user && item.password === pass){
-                    window.admin = item;
+                    sessionStorage.setItem('admin', JSON.stringify(item));
                     setTimeout(() => {
                         isLoadStore.dispatch({type: 'DISPLAY_NO'});
                         setIslogin(true);
@@ -74,7 +74,7 @@ function Admin() {
 
     return ( 
         <div>
-            { isLogin ? 
+            { sessionStorage.admin ? 
                 <div className="admin">
                     <Side handleSelectShow={handleSelectShow}></Side>
                     <Main showValue={showValue} listAccount={listAccount} listTracking={listTracking} listProduct={listProduct}></Main>

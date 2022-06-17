@@ -88,9 +88,9 @@ export function bookItem(data){
 }
 
 export function getUser(){
-    var baseUrl = mainDomain + 'user?userId=' + (window.user ? window.user._id : '');
+    var baseUrl = mainDomain + 'user?userId=' + (sessionStorage.user ? JSON.parse(sessionStorage.user)._id : '');
     isLoadStore.dispatch({type: 'DISPLAY_YES'});
-    if(!window.user === true) return;
+    if(!sessionStorage.user === true) return;
     axios.get(baseUrl)
         .then(function (res) {
             isLoadStore.dispatch({type: 'DISPLAY_NO'});
@@ -117,3 +117,19 @@ export function getListAccount(){
         }
     )
 }
+
+export function DeleteItem(iduser,idproduct){
+    console.log(iduser,idproduct)
+    var baseUrl = mainDomain + 'favourite/delete?iduser='+ iduser + '&idproduct=' + idproduct;
+    isLoadStore.dispatch({type: 'DISPLAY_YES'});
+    axios.post(baseUrl)
+        .then(function (res){
+            listAccountStore.dispatch({type: 'SET', data: res.data});
+            getUser();
+        })
+        .catch( function(err){
+            isLoadStore.dispatch({type: 'DISPLAY_NO'});
+            console.log(err)
+        }
+    )
+} 

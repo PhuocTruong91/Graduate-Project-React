@@ -26,7 +26,7 @@ function BookPopup(props) {
 
     function handleBookItem(){
         var data = {
-            idUser: window.user ? window.user._id : '',
+            idUser: sessionStorage.user ? JSON.parse(sessionStorage.user)._id : '',
             idProduct: props.id,
             presentPrice: props.price,
             priceExpected: inputValue.replace(/\./g,''),
