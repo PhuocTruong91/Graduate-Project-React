@@ -88,9 +88,9 @@ export function bookItem(data){
 }
 
 export function getUser(){
-    var baseUrl = mainDomain + 'user?userId=' + (sessionStorage.user ? JSON.parse(sessionStorage.user)._id : '');
+    var baseUrl = mainDomain + 'user?userId=' + (window.user ? window.user._id : '');
     isLoadStore.dispatch({type: 'DISPLAY_YES'});
-    if(!sessionStorage.user === true) return;
+    if(!window.user === true) return;
     axios.get(baseUrl)
         .then(function (res) {
             isLoadStore.dispatch({type: 'DISPLAY_NO'});

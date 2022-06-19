@@ -21,7 +21,7 @@ function MainList(props) {
     }
 
     function handleDelete (){
-        DeleteItem(JSON.parse(sessionStorage.user)._id,id);
+        DeleteItem(window.user._id,id);
         setDisplay(false);
     }
 

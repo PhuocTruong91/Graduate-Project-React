@@ -11,27 +11,27 @@ function MainInfo(props) {
         <div className="user-info">
             <p className="title">Thông tin cá nhân</p>
             {
-                sessionStorage.user ? 
+                window.user ? 
                     <div className="user-info_container">
                         <div className="item">
                             <p>Tên người dùng:</p>
-                            <input className="input-basic" value={JSON.parse(sessionStorage.user).name} disabled/>
+                            <input className="input-basic" value={window.user.name} disabled/>
                         </div>
                         <div className="item">
                             <p>Số điện thoại:</p>
-                            <input className="input-basic" value={JSON.parse(sessionStorage.user).phone} disabled/>
+                            <input className="input-basic" value={window.user.phone} disabled/>
                         </div>
                         <div className="item">
                             <p>Email:</p>
-                            <input className="input-basic" value={JSON.parse(sessionStorage.user).email} disabled/>
+                            <input className="input-basic" value={window.user.email} disabled/>
                         </div>
                         <div className="item">
                             <p>Tên đăng nhập:</p>
-                            <input className="input-basic" value={JSON.parse(sessionStorage.user).username} disabled/>
+                            <input className="input-basic" value={window.user.username} disabled/>
                         </div>
                         <div className="item">
                             <p>Mật khẩu:</p>
-                            <input type={showPass ? '' : 'password'} className="input-basic" value={JSON.parse(sessionStorage.user).password} disabled/>
+                            <input type={showPass ? '' : 'password'} className="input-basic" value={window.user.password} disabled/>
                             {
                                 showPass ? 
                                     <svg onClick={handleClick} width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">

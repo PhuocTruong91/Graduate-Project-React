@@ -1,6 +1,5 @@
 import MainItem from './MainItem';
 import React from 'react';
-import BeatLoader from "react-spinners/BeatLoader";
 
 import tgdd from '../../../../images/tgdd.png'
 import fpt from '../../../../images/fpt.png'

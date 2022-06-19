@@ -100,7 +100,7 @@ function Home() {
     } 
 
     function handleDisplayPopup(event){
-        if(sessionStorage.user){
+        if(window.user){
             if(event && event.target.attributes.value){
                 setPricePopup(event.target.attributes.value.value);
                 setNamePopup(event.target.attributes.name.value);
