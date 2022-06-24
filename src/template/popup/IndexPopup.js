@@ -3,6 +3,7 @@ import CheckEmail from './CheckEmail'
 import PopupWarning from './PopupWarning'
 import PopupAccount from './PopupAccount'
 import DeleteAccount from './DeleteAccount'
+import UpdateProduct from './UpdateProduct'
 import '../../css/popup.scss'
 import BeatLoader from "react-spinners/BeatLoader";
 import React from 'react';
@@ -19,6 +20,7 @@ function Index() {
             <CheckEmail></CheckEmail>
             <PopupAccount></PopupAccount>
             <DeleteAccount></DeleteAccount>
+            <UpdateProduct></UpdateProduct>
             { isLoad ? 
 				<div className="loader">
 					<BeatLoader color="#fff" size={30} />
