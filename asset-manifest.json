@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Graduate-Project-React/static/css/main.e18ab69e.css",
-    "main.js": "/Graduate-Project-React/static/js/main.0cf9aa03.js",
+    "main.js": "/Graduate-Project-React/static/js/main.9942f5c7.js",
     "static/media/mulish-all-400-normal.woff": "/Graduate-Project-React/static/media/mulish-all-400-normal.38c7d04e126dff3ae16d.woff",
     "static/media/mulish-latin-400-normal.woff2": "/Graduate-Project-React/static/media/mulish-latin-400-normal.789d075c570d16d02c38.woff2",
     "static/media/mulish-latin-ext-400-normal.woff2": "/Graduate-Project-React/static/media/mulish-latin-ext-400-normal.37d18d40c35eff5ac8df.woff2",
@@ -10,10 +10,10 @@
     "static/media/mulish-vietnamese-400-normal.woff2": "/Graduate-Project-React/static/media/mulish-vietnamese-400-normal.0c5054fb161d1cdcec73.woff2",
     "index.html": "/Graduate-Project-React/index.html",
     "main.e18ab69e.css.map": "/Graduate-Project-React/static/css/main.e18ab69e.css.map",
-    "main.0cf9aa03.js.map": "/Graduate-Project-React/static/js/main.0cf9aa03.js.map"
+    "main.9942f5c7.js.map": "/Graduate-Project-React/static/js/main.9942f5c7.js.map"
   },
   "entrypoints": [
     "static/css/main.e18ab69e.css",
-    "static/js/main.0cf9aa03.js"
+    "static/js/main.9942f5c7.js"
   ]
 }
