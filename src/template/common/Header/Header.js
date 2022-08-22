@@ -70,7 +70,7 @@ function Header(props) {
                     <div className="nav-link">
                         <Link to='/Graduate-Project-React'><p>Trang chủ</p></Link>
                         <p>Dịch vụ</p>
-                        <p>Ưu đãi</p>
+                        <p>Ưu đãi qweqweqweqw</p>
                         <p>Hỗ trợ</p>
                     </div>
                 </div>

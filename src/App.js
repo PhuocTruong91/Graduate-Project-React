@@ -10,11 +10,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   	return (
 		<div>
-			<BrowserRouter>
+			<BrowserRouter basename='/Graduate-Project-React'>
 				<Routes>
-					<Route path='/Graduate-Project-React' element={<Home />}></Route>
-					<Route path='/Graduate-Project-React/admin' element={<Admin />}></Route>
-					<Route path='/Graduate-Project-React/account' element={<Account />}></Route>
+					<Route path='/' element={<Home />}></Route>
+					<Route path='/admin' element={<Admin />}></Route>
+					<Route path='/account' element={<Account />}></Route>
 				</Routes>
 			</BrowserRouter>
 			<IndexPopup></IndexPopup>
