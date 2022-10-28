@@ -21,7 +21,7 @@ function App() {
 			<IndexPopup></IndexPopup>
 			<MessengerCustomerChat
 				pageId="106761812238913"
-				appId="544996800075744"
+				appId="2508642169281267"
 			/>
 		</div>
   	);
