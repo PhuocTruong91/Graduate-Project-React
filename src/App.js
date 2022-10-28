@@ -4,6 +4,7 @@ import Admin from './template/admin/Admin';
 import Account from './template/client/Account/Account';
 import IndexPopup from './template/popup/IndexPopup';
 import './css/common.scss';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -18,6 +19,10 @@ function App() {
 				</Routes>
 			</BrowserRouter>
 			<IndexPopup></IndexPopup>
+			<MessengerCustomerChat
+				pageId="106761812238913"
+				appId="544996800075744"
+			/>
 		</div>
   	);
 }
