@@ -23,6 +23,10 @@ function App() {
 				pageId="106761812238913"
 				appId="2508642169281267"
 			/>
+			<MessengerCustomerChat
+				pageId="100086242666455"
+				appId="441659350368423"
+			/>
 		</div>
   	);
 }
