@@ -28,7 +28,7 @@ function App() {
 				appId="441659350368423"
 			/> */}
 			<MessengerCustomerChat
-				pageId="106761812238913"
+				pageId="100086242666455"
 				appId="2960111497624310"
 			/>
 		</div>
